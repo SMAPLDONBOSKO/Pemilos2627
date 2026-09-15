@@ -101,6 +101,7 @@
 
   @media (prefers-reduced-motion:reduce){
     .orb{animation:none;}
+
     *{
       animation-duration:0.001ms !important;
       transition-duration:0.001ms !important;
@@ -167,6 +168,8 @@
     background:var(--panel-strong);
     border-color:rgba(255,255,255,0.28);
   }
+
+  /* LOGIN */
 
   #screen-login .content{
     flex:1;
@@ -316,6 +319,8 @@
     box-shadow:none;
   }
 
+  /* VOTE */
+
   #screen-vote .content{
     flex:1;
     padding:46px 6vw 60px;
@@ -352,7 +357,10 @@
     padding:20px;
     cursor:pointer;
     position:relative;
-    transition:transform 0.2s ease,border-color 0.2s ease,background 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
   }
 
   .candidate-card:hover{
@@ -363,7 +371,9 @@
   .candidate-card.selected{
     border-color:var(--accent);
     background:rgba(245,180,0,0.09);
-    box-shadow:0 0 0 1px var(--accent),0 20px 50px rgba(245,180,0,0.15);
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 20px 50px rgba(245,180,0,0.15);
   }
 
   .candidate-card .top-row{
@@ -471,6 +481,8 @@
     color:rgba(255,255,255,0.32);
   }
 
+  /* THANK YOU */
+
   #screen-thanks .content{
     flex:1;
     display:flex;
@@ -518,18 +530,6 @@
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-  }
-
-  #screen-thanks p.timer{
-    margin-top:26px;
-    font-size:12.5px;
-    color:rgba(255,255,255,0.32);
-    letter-spacing:0.3px;
-  }
-
-  #screen-thanks p.timer b{
-    color:var(--text-dim);
-    font-weight:700;
   }
 
   /* ADMIN */
@@ -746,6 +746,7 @@
   <div class="content">
     <div class="login-copy">
       <h1>Pemilihan Ketua<br><span>OSIS/MPK</span></h1>
+
       <p class="desc"></p>
 
       <div class="stat-row">
@@ -773,6 +774,7 @@
       <form id="login-form" novalidate>
         <div class="field">
           <label for="username">Username</label>
+
           <input
             type="text"
             id="username"
@@ -785,6 +787,7 @@
 
         <div class="field">
           <label for="password">Password</label>
+
           <input
             type="password"
             id="password"
@@ -798,7 +801,11 @@
           Username atau password salah. Silakan coba lagi.
         </div>
 
-        <button type="submit" class="btn-primary" id="login-submit">
+        <button
+          type="submit"
+          class="btn-primary"
+          id="login-submit"
+        >
           Masuk
         </button>
       </form>
@@ -827,12 +834,20 @@
 
   <div class="content">
     <h1>Pilih satu pasangan calon ketua osis</h1>
+
     <p class="instructions"></p>
 
-    <div class="candidate-grid" id="candidate-grid"></div>
+    <div
+      class="candidate-grid"
+      id="candidate-grid"
+    ></div>
 
     <div class="vote-action">
-      <button class="btn-primary" id="confirm-vote-btn" disabled>
+      <button
+        class="btn-primary"
+        id="confirm-vote-btn"
+        disabled
+      >
         Pilih salah satu pasangan calon
       </button>
 
@@ -845,6 +860,7 @@
 
 <section id="screen-thanks" class="screen">
   <div class="content">
+
     <div class="check-badge">
       <svg viewBox="0 0 24 24" fill="none">
         <path
@@ -859,17 +875,13 @@
 
     <h1>Terima kasih</h1>
 
-    <p class="timer">
-      Kembali ke bilik suara dalam
-      <b id="thanks-countdown">5</b>
-      detik&hellip;
-    </p>
   </div>
 </section>
 
 <!-- ADMIN -->
 
 <section id="screen-admin" class="screen">
+
   <header class="top">
     <div class="brand">
       <div class="mark">
@@ -882,18 +894,31 @@
       </div>
     </div>
 
-    <button class="btn-link" id="logout-btn">
+    <button
+      class="btn-link"
+      id="logout-btn"
+    >
       Keluar
     </button>
   </header>
 
   <div class="content">
+
     <div class="admin-head">
       <div>
-        <div class="eyebrow">ADMIN ONLY</div>
-        <h1>Hasil Penghitungan Suara</h1>
-        <div class="admin-status" id="admin-status">
-          Menyiapkan hasil...
+        <div class="eyebrow">
+          ADMIN ONLY
+        </div>
+
+        <h1>
+          Hasil Penghitungan Suara
+        </h1>
+
+        <div
+          class="admin-status"
+          id="admin-status"
+        >
+          Menghubungkan...
         </div>
       </div>
     </div>
@@ -901,7 +926,9 @@
     <div class="card results-panel">
 
       <div class="result-row">
+
         <div class="result-top">
+
           <img
             class="result-photo"
             src="images/paslon1.png"
@@ -909,24 +936,52 @@
           >
 
           <div class="result-info">
-            <div class="result-tag">PASLON 01</div>
-            <div class="result-name">Immaculata Paksi</div>
-            <div class="result-partner">&amp; Aditia Maulana</div>
+
+            <div class="result-tag">
+              PASLON 01
+            </div>
+
+            <div class="result-name">
+              Immaculata Paksi
+            </div>
+
+            <div class="result-partner">
+              &amp; Aditia Maulana
+            </div>
+
           </div>
 
           <div class="result-votes">
-            <div class="number" id="result-1">0</div>
-            <div class="label">suara</div>
+
+            <div
+              class="number"
+              id="result-1"
+            >
+              0
+            </div>
+
+            <div class="label">
+              suara
+            </div>
+
           </div>
+
         </div>
 
         <div class="result-bar-track">
-          <div class="result-bar bar-1" id="bar-1"></div>
+          <div
+            class="result-bar bar-1"
+            id="bar-1"
+          ></div>
         </div>
+
       </div>
 
+
       <div class="result-row">
+
         <div class="result-top">
+
           <img
             class="result-photo"
             src="images/paslon2.png"
@@ -934,24 +989,52 @@
           >
 
           <div class="result-info">
-            <div class="result-tag">PASLON 02</div>
-            <div class="result-name">Yeriel Febrian</div>
-            <div class="result-partner">&amp; Kenzie Letichia</div>
+
+            <div class="result-tag">
+              PASLON 02
+            </div>
+
+            <div class="result-name">
+              Yeriel Febrian
+            </div>
+
+            <div class="result-partner">
+              &amp; Kenzie Letichia
+            </div>
+
           </div>
 
           <div class="result-votes">
-            <div class="number" id="result-2">0</div>
-            <div class="label">suara</div>
+
+            <div
+              class="number"
+              id="result-2"
+            >
+              0
+            </div>
+
+            <div class="label">
+              suara
+            </div>
+
           </div>
+
         </div>
 
         <div class="result-bar-track">
-          <div class="result-bar bar-2" id="bar-2"></div>
+          <div
+            class="result-bar bar-2"
+            id="bar-2"
+          ></div>
         </div>
+
       </div>
 
+
       <div class="result-row">
+
         <div class="result-top">
+
           <img
             class="result-photo"
             src="images/paslon3.png"
@@ -959,30 +1042,61 @@
           >
 
           <div class="result-info">
-            <div class="result-tag">PASLON 03</div>
-            <div class="result-name">Vinta Ngesti</div>
-            <div class="result-partner">&amp; Darius</div>
+
+            <div class="result-tag">
+              PASLON 03
+            </div>
+
+            <div class="result-name">
+              Vinta Ngesti
+            </div>
+
+            <div class="result-partner">
+              &amp; Darius
+            </div>
+
           </div>
 
           <div class="result-votes">
-            <div class="number" id="result-3">0</div>
-            <div class="label">suara</div>
+
+            <div
+              class="number"
+              id="result-3"
+            >
+              0
+            </div>
+
+            <div class="label">
+              suara
+            </div>
+
           </div>
+
         </div>
 
         <div class="result-bar-track">
-          <div class="result-bar bar-3" id="bar-3"></div>
+          <div
+            class="result-bar bar-3"
+            id="bar-3"
+          ></div>
         </div>
+
       </div>
 
+
       <div class="total-row">
+
         <div class="total-label">
           TOTAL SUARA MASUK
         </div>
 
-        <div class="total-number" id="result-total">
+        <div
+          class="total-number"
+          id="result-total"
+        >
           0
         </div>
+
       </div>
 
     </div>
@@ -990,6 +1104,7 @@
 </section>
 
 <script type="module">
+
   import {
     createClient
   } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
@@ -1000,10 +1115,11 @@
   const SUPABASE_PUBLISHABLE_KEY =
     'sb_publishable_LnuDmfxpBdz91mF1-nvB1A_4XZmt3it';
 
-  const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+  const supabase =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
   const CANDIDATES = [
     {
@@ -1041,90 +1157,148 @@
   let currentPassword = '';
 
   let currentAdminToken = '';
+
   let adminResultsChannel = null;
 
-  let thanksTimerInterval = null;
-  let thanksRevertTimeout = null;
-
   const screens = {
-    login:document.getElementById('screen-login'),
-    vote:document.getElementById('screen-vote'),
-    thanks:document.getElementById('screen-thanks'),
-    admin:document.getElementById('screen-admin')
+    login:
+      document.getElementById(
+        'screen-login'
+      ),
+
+    vote:
+      document.getElementById(
+        'screen-vote'
+      ),
+
+    thanks:
+      document.getElementById(
+        'screen-thanks'
+      ),
+
+    admin:
+      document.getElementById(
+        'screen-admin'
+      )
   };
 
   function showScreen(name){
-    Object.values(screens).forEach(function(screen){
-      screen.classList.remove('active');
-    });
 
-    screens[name].classList.add('active');
+    Object.values(screens)
+      .forEach(function(screen){
+
+        screen.classList.remove(
+          'active'
+        );
+
+      });
+
+    screens[name]
+      .classList.add('active');
   }
 
-  /* ---------------- LOGIN ---------------- */
+  /* LOGIN */
 
   const loginForm =
-    document.getElementById('login-form');
+    document.getElementById(
+      'login-form'
+    );
 
   const loginError =
-    document.getElementById('login-error');
+    document.getElementById(
+      'login-error'
+    );
 
-  loginForm.addEventListener('submit', function(event){
-    event.preventDefault();
-    handleLogin();
-  });
+  loginForm.addEventListener(
+    'submit',
+    function(event){
+
+      event.preventDefault();
+
+      handleLogin();
+
+    }
+  );
 
   async function handleLogin(){
+
     const username =
-      document.getElementById('username').value.trim();
+      document
+        .getElementById('username')
+        .value
+        .trim();
 
     const password =
-      document.getElementById('password').value.trim();
+      document
+        .getElementById('password')
+        .value
+        .trim();
 
     const loginSubmit =
-      document.getElementById('login-submit');
+      document.getElementById(
+        'login-submit'
+      );
 
-    loginError.classList.remove('show');
+    loginError.classList.remove(
+      'show'
+    );
 
     if(!username || !password){
-      loginError.classList.add('show');
+
+      loginError.classList.add(
+        'show'
+      );
+
       return;
     }
 
     loginSubmit.disabled = true;
 
     try{
-      const response = await fetch(
-        SUPABASE_URL + '/functions/v1/auth',
-        {
-          method:'POST',
 
-          headers:{
-            'Content-Type':'application/json',
-            'apikey':SUPABASE_PUBLISHABLE_KEY,
-            'Authorization':
-              'Bearer ' + SUPABASE_PUBLISHABLE_KEY
-          },
+      const response =
+        await fetch(
+          SUPABASE_URL +
+          '/functions/v1/auth',
+          {
+            method:'POST',
 
-          body:JSON.stringify({
-            username:username,
-            password:password
-          })
-        }
-      );
+            headers:{
+              'Content-Type':
+                'application/json',
+
+              'apikey':
+                SUPABASE_PUBLISHABLE_KEY,
+
+              'Authorization':
+                'Bearer ' +
+                SUPABASE_PUBLISHABLE_KEY
+            },
+
+            body:JSON.stringify({
+              username:
+                username,
+
+              password:
+                password
+            })
+          }
+        );
 
       const contentType =
-        response.headers.get('content-type') || '';
+        response.headers
+          .get('content-type') ||
+        '';
 
-      /*
-       * Admin response:
-       * {
-       *   role: "admin",
-       *   access_token: "..."
-       * }
-       */
+      /* ADMIN */
 
-      if(contentType.includes('application/json')){
+      if(
+        contentType
+          .includes(
+            'application/json'
+          )
+      ){
+
         const result =
           await response.json();
 
@@ -1133,197 +1307,242 @@
           result.role === 'admin' &&
           result.access_token
         ){
-          currentUsername = username;
-          currentPassword = password;
+
+          currentUsername =
+            username;
+
+          currentPassword =
+            password;
+
           currentAdminToken =
             result.access_token;
 
-          await setupAdminRealtime();
+          try{
 
-          showScreen('admin');
+            await setupAdminRealtime();
+
+          }catch(adminError){
+
+            console.error(
+              'Admin setup failed:',
+              adminError
+            );
+
+            loginError.textContent =
+              'Admin results could not be loaded.';
+
+            loginError.classList.add(
+              'show'
+            );
+
+            return;
+          }
+
+          showScreen(
+            'admin'
+          );
 
           return;
         }
 
-        loginError.classList.add('show');
+        loginError.classList.add(
+          'show'
+        );
+
         return;
       }
 
-      /*
-       * Voter / failed response:
-       *
-       * "voter"
-       * "false"
-       */
+      /* VOTER */
 
       const result =
-        (await response.text()).trim();
+        (
+          await response.text()
+        ).trim();
 
       if(
         response.ok &&
         result === 'voter'
       ){
-        currentUsername = username;
-        currentPassword = password;
 
-        selectedCandidateId = null;
+        currentUsername =
+          username;
+
+        currentPassword =
+          password;
+
+        selectedCandidateId =
+          null;
 
         renderCandidates();
+
         updateConfirmButton();
 
-        showScreen('vote');
+        showScreen(
+          'vote'
+        );
 
         return;
       }
 
-      loginError.classList.add('show');
+      loginError.classList.add(
+        'show'
+      );
 
     }catch(error){
+
       console.error(
         'Login request failed:',
         error
       );
 
-      loginError.classList.add('show');
+      loginError.classList.add(
+        'show'
+      );
 
     }finally{
-      loginSubmit.disabled = false;
+
+      loginSubmit.disabled =
+        false;
+
     }
   }
 
-  /* ---------------- ADMIN REALTIME ---------------- */
+  /* ADMIN REALTIME */
 
   const adminStatus =
-    document.getElementById('admin-status');
-
-  async function setupAdminRealtime(){
-    adminStatus.textContent =
-      'Menghubungkan ke hasil realtime...';
-
-    adminStatus.className =
-      'admin-status';
-
-    if(adminResultsChannel){
-      await supabase.removeChannel(
-        adminResultsChannel
-      );
-
-      adminResultsChannel = null;
-    }
-
-    if(!currentAdminToken){
-      throw new Error(
-        'Admin token tidak tersedia.'
-      );
-    }
-
-    /*
-     * Give Supabase Realtime the custom signed
-     * JWT returned by the auth Edge Function.
-     */
-    supabase.realtime.setAuth(
-      currentAdminToken
+    document.getElementById(
+      'admin-status'
     );
 
-    /*
-     * Initial read.
-     * This gives the admin the current values
-     * immediately when entering the page.
-     */
-    const {
-      data: initialRows,
-      error: initialError
-    } = await supabase
-      .from('popul')
-      .select('calon, pop')
-      .order('calon');
+async function setupAdminRealtime(){
 
-    if(initialError){
-      console.error(
-        'Initial popul read failed:',
-        initialError
-      );
+  adminStatus.textContent = 'Menghubungkan...';
+  adminStatus.className = 'admin-status';
 
-      adminStatus.textContent =
-        'Gagal membaca hasil suara.';
-
-      adminStatus.className =
-        'admin-status error';
-
-      throw initialError;
-    }
-
-    updateAdminResults(
-      initialRows || []
-    );
-
-    /*
-     * Realtime subscription.
-     *
-     * Only UPDATE is needed because insert
-     * changes existing popul rows.
-     */
-    adminResultsChannel =
-      supabase
-        .channel('admin-popul-results')
-
-        .on(
-          'postgres_changes',
-          {
-            event:'UPDATE',
-            schema:'public',
-            table:'popul'
-          },
-          function(payload){
-            updateAdminRow(
-              payload.new
-            );
-          }
-        )
-
-        .subscribe(
-          function(status, error){
-            console.log(
-              'Realtime status:',
-              status
-            );
-
-            if(status === 'SUBSCRIBED'){
-              adminStatus.textContent =
-                'Realtime aktif';
-
-              adminStatus.className =
-                'admin-status online';
-
-              return;
-            }
-
-            if(
-              status === 'CHANNEL_ERROR' ||
-              status === 'TIMED_OUT'
-            ){
-              console.error(
-                'Realtime error:',
-                error
-              );
-
-              adminStatus.textContent =
-                'Realtime gagal terhubung.';
-
-              adminStatus.className =
-                'admin-status error';
-            }
-          }
-        );
+  if(adminResultsChannel){
+    await supabase.removeChannel(adminResultsChannel);
+    adminResultsChannel = null;
   }
 
-  function updateAdminResults(rows){
-    rows.forEach(function(row){
-      updateAdminRow(row);
+  if(!currentAdminToken){
+    throw new Error('Admin token tidak tersedia.');
+  }
+
+  /*
+   * Give Realtime the signed admin JWT.
+   */
+  supabase.realtime.setAuth(currentAdminToken);
+
+  /*
+   * Initial read using the admin JWT directly.
+   * This is the part that fixes the values starting at 0.
+   */
+  const response = await fetch(
+    SUPABASE_URL + '/rest/v1/popul?select=calon,pop',
+    {
+      method: 'GET',
+      headers: {
+        'apikey': SUPABASE_PUBLISHABLE_KEY,
+        'Authorization': 'Bearer ' + currentAdminToken
+      }
+    }
+  );
+
+  if(!response.ok){
+    const errorText = await response.text();
+
+    console.error(
+      'Initial popul read failed:',
+      response.status,
+      errorText
+    );
+
+    adminStatus.textContent =
+      'Gagal membaca hasil suara.';
+
+    adminStatus.className =
+      'admin-status error';
+
+    throw new Error(
+      'Could not read popul: ' +
+      response.status
+    );
+  }
+
+  const initialRows = await response.json();
+
+  /*
+   * Put the real database values into the diagram.
+   */
+  updateAdminResults(initialRows);
+
+  /*
+   * Subscribe to future UPDATE events.
+   */
+  adminResultsChannel = supabase
+    .channel('admin-popul-results')
+    .on(
+      'postgres_changes',
+      {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'popul'
+      },
+      function(payload){
+        updateAdminRow(payload.new);
+      }
+    )
+    .subscribe(function(status, error){
+
+      console.log(
+        'Realtime status:',
+        status
+      );
+
+      if(status === 'SUBSCRIBED'){
+        adminStatus.textContent =
+          'Realtime aktif';
+
+        adminStatus.className =
+          'admin-status online';
+
+        return;
+      }
+
+      if(
+        status === 'CHANNEL_ERROR' ||
+        status === 'TIMED_OUT'
+      ){
+        console.error(
+          'Realtime error:',
+          error
+        );
+
+        adminStatus.textContent =
+          'Realtime gagal terhubung.';
+
+        adminStatus.className =
+          'admin-status error';
+      }
     });
+}
+  function updateAdminResults(rows){
+
+    rows.forEach(
+      function(row){
+
+        updateAdminRow(
+          row
+        );
+
+      }
+    );
+
+    updateBars();
   }
 
   function updateAdminRow(row){
+
     if(!row){
       return;
     }
@@ -1334,9 +1553,7 @@
     const pop =
       Number(row.pop);
 
-    if(
-      !Number.isFinite(pop)
-    ){
+    if(!Number.isFinite(pop)){
       return;
     }
 
@@ -1345,121 +1562,147 @@
       calon === '2' ||
       calon === '3'
     ){
-      updateCandidateResult(
-        Number(calon),
-        pop
-      );
+
+      const value =
+        document.getElementById(
+          'result-' + calon
+        );
+
+      if(value){
+
+        value.textContent =
+          pop.toLocaleString(
+            'id-ID'
+          );
+
+      }
+
+      updateBars();
 
       return;
     }
 
     if(calon === 'total'){
-      document.getElementById(
-        'result-total'
-      ).textContent =
-        pop.toLocaleString('id-ID');
-    }
-  }
 
-  function updateCandidateResult(
-    calon,
-    pop
-  ){
-    const valueElement =
-      document.getElementById(
-        'result-' + calon
-      );
+      const total =
+        document.getElementById(
+          'result-total'
+        );
 
-    const barElement =
-      document.getElementById(
-        'bar-' + calon
-      );
+      if(total){
 
-    if(valueElement){
-      valueElement.textContent =
-        pop.toLocaleString('id-ID');
-    }
+        total.textContent =
+          pop.toLocaleString(
+            'id-ID'
+          );
 
-    /*
-     * The bars are visual only.
-     * They are scaled relative to the highest
-     * current vote count; no percentage is shown.
-     */
-    if(barElement){
-      updateBars();
+      }
     }
   }
 
   function updateBars(){
-    const values = [1,2,3].map(function(id){
-      const element =
-        document.getElementById(
-          'result-' + id
-        );
 
-      return element
-        ? Number(
-            element.textContent.replace(
-              /\./g,
-              ''
-            )
-          ) || 0
-        : 0;
-    });
+    const values =
+      [1,2,3].map(
+        function(id){
+
+          const element =
+            document.getElementById(
+              'result-' + id
+            );
+
+          if(!element){
+            return 0;
+          }
+
+          return Number(
+            element.textContent
+              .replace(/\./g,'')
+          ) || 0;
+
+        }
+      );
 
     const maxValue =
-      Math.max(...values,1);
+      Math.max(
+        ...values,
+        1
+      );
 
-    values.forEach(function(value,index){
-      const id = index + 1;
+    values.forEach(
+      function(value,index){
 
-      const bar =
-        document.getElementById(
-          'bar-' + id
-        );
+        const id =
+          index + 1;
 
-      if(bar){
-        const width =
-          Math.max(
-            4,
-            Math.round(
-              (value / maxValue) * 100
-            )
+        const bar =
+          document.getElementById(
+            'bar-' + id
           );
 
-        bar.style.width =
-          width + '%';
+        if(bar){
+
+          const width =
+            Math.max(
+              4,
+              Math.round(
+                (
+                  value /
+                  maxValue
+                ) * 100
+              )
+            );
+
+          bar.style.width =
+            width + '%';
+
+        }
+
       }
-    });
+    );
   }
 
-  /* ---------------- LOGOUT ---------------- */
+  /* LOGOUT */
 
   document
     .getElementById('logout-btn')
     .addEventListener(
       'click',
       async function(){
-        if(adminResultsChannel){
-          await supabase.removeChannel(
-            adminResultsChannel
-          );
 
-          adminResultsChannel = null;
+        if(adminResultsChannel){
+
+          await supabase
+            .removeChannel(
+              adminResultsChannel
+            );
+
+          adminResultsChannel =
+            null;
         }
 
-        supabase.realtime.setAuth('');
+        supabase.realtime.setAuth(
+          ''
+        );
 
-        currentAdminToken = '';
-        currentUsername = '';
-        currentPassword = '';
-        selectedCandidateId = null;
+        currentAdminToken =
+          '';
+
+        currentUsername =
+          '';
+
+        currentPassword =
+          '';
+
+        selectedCandidateId =
+          null;
 
         window.location.reload();
+
       }
     );
 
-  /* ---------------- VOTE SCREEN ---------------- */
+  /* VOTING */
 
   const candidateGrid =
     document.getElementById(
@@ -1472,117 +1715,162 @@
     );
 
   function renderCandidates(){
+
     candidateGrid.innerHTML =
-      CANDIDATES.map(function(c){
-        return (
-          '<div class="card candidate-card" ' +
-          'data-id="' + c.id + '" ' +
-          'tabindex="0" ' +
-          'role="button" ' +
-          'aria-pressed="false">' +
+      CANDIDATES
+        .map(function(c){
 
-            '<div class="top-row">' +
+          return (
 
-              '<span class="paslon-tag ' +
-                c.tagClass + '">' +
-                c.tag +
-              '</span>' +
+            '<div class="card candidate-card" ' +
+              'data-id="' +
+              c.id +
+              '" ' +
+              'tabindex="0" ' +
+              'role="button" ' +
+              'aria-pressed="false">' +
 
-              '<span class="radio-dot"></span>' +
+              '<div class="top-row">' +
 
-            '</div>' +
+                '<span class="paslon-tag ' +
+                  c.tagClass +
+                  '">' +
+                  c.tag +
+                '</span>' +
 
-            '<img class="candidate-photo" ' +
-              'src="' + c.photo + '" ' +
-              'alt="Foto ' + c.name + '">' +
+                '<span class="radio-dot"></span>' +
 
-            '<div class="cname">' +
-              c.name +
-            '</div>' +
+              '</div>' +
 
-            '<div class="cpartner">' +
-              c.partner +
-            '</div>' +
+              '<img class="candidate-photo" ' +
+                'src="' +
+                c.photo +
+                '" ' +
+                'alt="Foto ' +
+                c.name +
+                '">' +
 
-            '<div class="cslogan">' +
-              c.slogan +
-            '</div>' +
+              '<div class="cname">' +
+                c.name +
+              '</div>' +
 
-          '</div>'
-        );
-      }).join('');
+              '<div class="cpartner">' +
+                c.partner +
+              '</div>' +
+
+              '<div class="cslogan">' +
+                c.slogan +
+              '</div>' +
+
+            '</div>'
+
+          );
+
+        })
+        .join('');
 
     candidateGrid
-      .querySelectorAll('.candidate-card')
-      .forEach(function(card){
+      .querySelectorAll(
+        '.candidate-card'
+      )
+      .forEach(
+        function(card){
 
-        card.addEventListener(
-          'click',
-          function(){
-            selectCandidate(
-              parseInt(
-                card.getAttribute('data-id'),
-                10
-              )
-            );
-          }
-        );
-
-        card.addEventListener(
-          'keydown',
-          function(event){
-            if(
-              event.key === 'Enter' ||
-              event.key === ' '
-            ){
-              event.preventDefault();
+          card.addEventListener(
+            'click',
+            function(){
 
               selectCandidate(
                 parseInt(
-                  card.getAttribute('data-id'),
+                  card.getAttribute(
+                    'data-id'
+                  ),
                   10
                 )
               );
+
             }
-          }
-        );
-      });
+          );
+
+          card.addEventListener(
+            'keydown',
+            function(event){
+
+              if(
+                event.key ===
+                  'Enter' ||
+                event.key ===
+                  ' '
+              ){
+
+                event.preventDefault();
+
+                selectCandidate(
+                  parseInt(
+                    card.getAttribute(
+                      'data-id'
+                    ),
+                    10
+                  )
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
   }
 
   function selectCandidate(id){
-    selectedCandidateId = id;
+
+    selectedCandidateId =
+      id;
 
     candidateGrid
-      .querySelectorAll('.candidate-card')
-      .forEach(function(card){
+      .querySelectorAll(
+        '.candidate-card'
+      )
+      .forEach(
+        function(card){
 
-        const isSelected =
-          parseInt(
-            card.getAttribute('data-id'),
-            10
-          ) === id;
+          const isSelected =
+            parseInt(
+              card.getAttribute(
+                'data-id'
+              ),
+              10
+            ) === id;
 
-        card.classList.toggle(
-          'selected',
-          isSelected
-        );
+          card.classList.toggle(
+            'selected',
+            isSelected
+          );
 
-        card.setAttribute(
-          'aria-pressed',
-          isSelected
-            ? 'true'
-            : 'false'
-        );
-      });
+          card.setAttribute(
+            'aria-pressed',
+            isSelected
+              ? 'true'
+              : 'false'
+          );
+
+        }
+      );
 
     updateConfirmButton();
   }
 
   function updateConfirmButton(){
+
     if(
-      selectedCandidateId === null
+      selectedCandidateId ===
+      null
     ){
-      confirmBtn.disabled = true;
+
+      confirmBtn.disabled =
+        true;
+
       confirmBtn.textContent =
         'Pilih Paslon';
 
@@ -1590,12 +1878,17 @@
     }
 
     const candidate =
-      CANDIDATES.find(function(c){
-        return c.id ===
-          selectedCandidateId;
-      });
+      CANDIDATES.find(
+        function(c){
 
-    confirmBtn.disabled = false;
+          return c.id ===
+            selectedCandidateId;
+
+        }
+      );
+
+    confirmBtn.disabled =
+      false;
 
     confirmBtn.textContent =
       'Kirim suara untuk ' +
@@ -1605,8 +1898,10 @@
   confirmBtn.addEventListener(
     'click',
     function(){
+
       if(
-        selectedCandidateId === null
+        selectedCandidateId ===
+        null
       ){
         return;
       }
@@ -1614,12 +1909,14 @@
       castVote(
         selectedCandidateId
       );
+
     }
   );
 
-  /* ---------------- INSERT VOTE ---------------- */
+  /* VOTE SUBMISSION */
 
   async function castVote(candidateId){
+
     if(
       !currentUsername ||
       !currentPassword
@@ -1627,61 +1924,106 @@
       return;
     }
 
-    confirmBtn.disabled = true;
+    confirmBtn.disabled =
+      true;
+
+    /*
+     * Show thank-you immediately.
+     * The server keeps this request alive
+     * for 5 seconds after recording the vote.
+     */
+    showScreen(
+      'thanks'
+    );
 
     try{
-      const response = await fetch(
-        SUPABASE_URL +
-        '/functions/v1/insert',
-        {
-          method:'POST',
 
-          headers:{
-            'Content-Type':'application/json',
-            'apikey':
-              SUPABASE_PUBLISHABLE_KEY,
-            'Authorization':
-              'Bearer ' +
-              SUPABASE_PUBLISHABLE_KEY
-          },
+      const response =
+        await fetch(
+          SUPABASE_URL +
+          '/functions/v1/insert',
+          {
+            method:'POST',
 
-          body:JSON.stringify({
-            username:
-              currentUsername,
+            headers:{
+              'Content-Type':
+                'application/json',
 
-            password:
-              currentPassword,
+              'apikey':
+                SUPABASE_PUBLISHABLE_KEY,
 
-            calon:
-              candidateId
-          })
-        }
-      );
+              'Authorization':
+                'Bearer ' +
+                SUPABASE_PUBLISHABLE_KEY
+            },
+
+            body:JSON.stringify({
+
+              username:
+                currentUsername,
+
+              password:
+                currentPassword,
+
+              calon:
+                candidateId
+
+            })
+          }
+        );
 
       const result =
-        (await response.text()).trim();
+        (
+          await response.text()
+        ).trim();
 
+      /*
+       * insert only returns true after
+       * its server-side 5-second delay.
+       */
       if(
         response.ok &&
         result === 'true'
       ){
-        goToThanks();
+
+        selectedCandidateId =
+          null;
+
+        renderCandidates();
+
+        updateConfirmButton();
+
+        showScreen(
+          'vote'
+        );
+
         return;
       }
 
-      confirmBtn.disabled = false;
+      showScreen(
+        'vote'
+      );
+
+      confirmBtn.disabled =
+        false;
 
       alert(
         'Suara gagal dikirim. Silakan coba lagi.'
       );
 
     }catch(error){
+
       console.error(
         'Vote submission failed:',
         error
       );
 
-      confirmBtn.disabled = false;
+      showScreen(
+        'vote'
+      );
+
+      confirmBtn.disabled =
+        false;
 
       alert(
         'Suara gagal dikirim. Silakan coba lagi.'
@@ -1689,64 +2031,8 @@
     }
   }
 
-  /* ---------------- THANK YOU ---------------- */
-
-  function goToThanks(){
-    showScreen('thanks');
-
-    let secondsLeft = 5;
-
-    const countdownEl =
-      document.getElementById(
-        'thanks-countdown'
-      );
-
-    countdownEl.textContent =
-      secondsLeft;
-
-    clearInterval(
-      thanksTimerInterval
-    );
-
-    clearTimeout(
-      thanksRevertTimeout
-    );
-
-    thanksTimerInterval =
-      setInterval(function(){
-
-        secondsLeft -= 1;
-
-        if(secondsLeft <= 0){
-          clearInterval(
-            thanksTimerInterval
-          );
-        }else{
-          countdownEl.textContent =
-            secondsLeft;
-        }
-
-      },1000);
-
-    thanksRevertTimeout =
-      setTimeout(function(){
-
-        clearInterval(
-          thanksTimerInterval
-        );
-
-        selectedCandidateId =
-          null;
-
-        renderCandidates();
-        updateConfirmButton();
-
-        showScreen('vote');
-
-      },5000);
-  }
-
   renderCandidates();
+
 </script>
 
 </body>
