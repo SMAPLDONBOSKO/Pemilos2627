@@ -4,61 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pemilos Don Bosko</title>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   :root{
-    --bg-deep: #0c1442;
-    --bg-mid: #121b5c;
-    --panel: rgba(255,255,255,0.06);
-    --panel-strong: rgba(255,255,255,0.10);
-    --border: rgba(255,255,255,0.14);
-    --text: #f3f4fb;
-    --text-dim: #aab0d8;
-    --accent: #f5b400;
-    --accent-soft: rgba(245,180,0,0.16);
-    --danger: #ff6b6b;
-    --ok: #35d399;
-    --radius-lg: 22px;
-    --radius-md: 14px;
-    --radius-sm: 9px;
+    --bg-deep:#0c1442;
+    --bg-mid:#121b5c;
+    --panel:rgba(255,255,255,0.06);
+    --panel-strong:rgba(255,255,255,0.10);
+    --border:rgba(255,255,255,0.14);
+    --text:#f3f4fb;
+    --text-dim:#aab0d8;
+    --accent:#f5b400;
+    --danger:#ff6b6b;
+    --ok:#35d399;
+    --radius-lg:22px;
+    --radius-md:14px;
+    --radius-sm:9px;
   }
 
-  *{box-sizing:border-box; margin:0; padding:0;}
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
 
   html,body{
     height:100%;
-    font-family:'Inter', system-ui, sans-serif;
+    font-family:'Inter',system-ui,sans-serif;
     color:var(--text);
     background:
-      radial-gradient(900px 600px at 12% 15%, rgba(245,180,0,0.10), transparent 60%),
-      radial-gradient(1000px 700px at 85% 80%, rgba(90,110,255,0.18), transparent 60%),
-      linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 55%, #0a1038 100%);
+      radial-gradient(900px 600px at 12% 15%,rgba(245,180,0,0.10),transparent 60%),
+      radial-gradient(1000px 700px at 85% 80%,rgba(90,110,255,0.18),transparent 60%),
+      linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,#0a1038 100%);
     overflow-x:hidden;
   }
 
   body{
     min-height:100vh;
-    background-image:
-      radial-gradient(900px 600px at 12% 15%, rgba(245,180,0,0.10), transparent 60%),
-      radial-gradient(1000px 700px at 85% 80%, rgba(90,110,255,0.18), transparent 60%),
-      linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 55%, #0a1038 100%);
   }
 
-  /* faint grid */
   body::before{
     content:"";
-    position:fixed; inset:0;
+    position:fixed;
+    inset:0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 44px 44px;
+      linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);
+    background-size:44px 44px;
     pointer-events:none;
     z-index:0;
-    mask-image: radial-gradient(circle at 50% 30%, black 0%, transparent 75%);
+    mask-image:radial-gradient(circle at 50% 30%,black 0%,transparent 75%);
   }
 
-  /* floating glow orbs */
   .orb{
     position:fixed;
     border-radius:50%;
@@ -66,20 +65,46 @@
     pointer-events:none;
     z-index:0;
     opacity:0.55;
-    animation: float 14s ease-in-out infinite;
+    animation:float 14s ease-in-out infinite;
   }
-  .orb-1{ width:340px; height:340px; background:radial-gradient(circle, rgba(245,180,0,0.35), transparent 70%); top:-80px; left:-80px; animation-delay:0s;}
-  .orb-2{ width:420px; height:420px; background:radial-gradient(circle, rgba(90,120,255,0.35), transparent 70%); bottom:-120px; right:-100px; animation-delay:3s;}
-  .orb-3{ width:260px; height:260px; background:radial-gradient(circle, rgba(255,255,255,0.10), transparent 70%); top:40%; left:60%; animation-delay:6s;}
+
+  .orb-1{
+    width:340px;
+    height:340px;
+    background:radial-gradient(circle,rgba(245,180,0,0.35),transparent 70%);
+    top:-80px;
+    left:-80px;
+  }
+
+  .orb-2{
+    width:420px;
+    height:420px;
+    background:radial-gradient(circle,rgba(90,120,255,0.35),transparent 70%);
+    bottom:-120px;
+    right:-100px;
+    animation-delay:3s;
+  }
+
+  .orb-3{
+    width:260px;
+    height:260px;
+    background:radial-gradient(circle,rgba(255,255,255,0.10),transparent 70%);
+    top:40%;
+    left:60%;
+    animation-delay:6s;
+  }
 
   @keyframes float{
-    0%, 100% { transform: translate(0,0); }
-    50% { transform: translate(20px, -26px); }
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(20px,-26px);}
   }
 
-  @media (prefers-reduced-motion: reduce){
-    .orb{ animation:none; }
-    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  @media (prefers-reduced-motion:reduce){
+    .orb{animation:none;}
+    *{
+      animation-duration:0.001ms !important;
+      transition-duration:0.001ms !important;
+    }
   }
 
   .screen{
@@ -89,40 +114,41 @@
     display:none;
     flex-direction:column;
   }
-  .screen.active{ display:flex; }
+
+  .screen.active{
+    display:flex;
+  }
 
   header.top{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding: 28px 5vw 0 5vw;
+    padding:28px 5vw 0;
   }
+
   .brand{
     display:flex;
     align-items:center;
     gap:14px;
   }
-  .brand .mark img{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: inherit;
 
+  .brand .mark img{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:inherit;
   }
-  .brand .names{ line-height:1.25; }
-  .brand .names .t1{ font-weight:800; font-size:15px; letter-spacing:0.2px; }
-  .brand .names .t2{ font-size:11.5px; color:var(--text-dim); letter-spacing:1.5px; }
 
   .logo-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.logo-row img{
-  height:100px;
-  width:100px;
-  object-fit:contain;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
 
+  .logo-row img{
+    height:100px;
+    width:100px;
+    object-fit:contain;
   }
 
   button.btn-link{
@@ -135,28 +161,38 @@
     font-weight:600;
     font-size:13.5px;
     cursor:pointer;
-    transition:background 0.2s ease, border-color 0.2s ease;
   }
-  button.btn-link:hover{ background:var(--panel-strong); border-color:rgba(255,255,255,0.28); }
 
-  /* ---------- LOGIN ---------- */
+  button.btn-link:hover{
+    background:var(--panel-strong);
+    border-color:rgba(255,255,255,0.28);
+  }
+
   #screen-login .content{
     flex:1;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding: 40px 6vw 60px;
+    padding:40px 6vw 60px;
     gap:70px;
     flex-wrap:wrap;
   }
-  .login-copy{ max-width:520px; }
+
+  .login-copy{
+    max-width:520px;
+  }
+
   .login-copy h1{
-    font-size:clamp(38px, 5.4vw, 62px);
+    font-size:clamp(38px,5.4vw,62px);
     font-weight:900;
     line-height:1.06;
     letter-spacing:-1px;
   }
-  .login-copy h1 span{ color:var(--accent); }
+
+  .login-copy h1 span{
+    color:var(--accent);
+  }
+
   .login-copy p.desc{
     margin-top:20px;
     color:var(--text-dim);
@@ -164,21 +200,33 @@
     line-height:1.65;
     max-width:440px;
   }
+
   .stat-row{
     display:flex;
     gap:38px;
     margin-top:46px;
     flex-wrap:wrap;
   }
-  .stat-row .stat .num{ font-size:26px; font-weight:800; color:var(--accent); }
-  .stat-row .stat .lbl{ font-size:11.5px; letter-spacing:1px; color:var(--text-dim); margin-top:4px; }
+
+  .stat-row .stat .num{
+    font-size:26px;
+    font-weight:800;
+    color:var(--accent);
+  }
+
+  .stat-row .stat .lbl{
+    font-size:11.5px;
+    letter-spacing:1px;
+    color:var(--text-dim);
+    margin-top:4px;
+  }
 
   .card{
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:var(--radius-lg);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
   }
 
   .login-card{
@@ -186,10 +234,22 @@
     max-width:420px;
     padding:40px 38px 34px;
   }
-  .login-card h2{ font-size:26px; font-weight:800; }
-  .login-card p.sub{ color:var(--text-dim); margin-top:6px; font-size:14px; }
 
-  .field{ margin-top:22px; }
+  .login-card h2{
+    font-size:26px;
+    font-weight:800;
+  }
+
+  .login-card p.sub{
+    color:var(--text-dim);
+    margin-top:6px;
+    font-size:14px;
+  }
+
+  .field{
+    margin-top:22px;
+  }
+
   .field label{
     display:block;
     font-size:12.5px;
@@ -197,6 +257,7 @@
     color:var(--text-dim);
     margin-bottom:8px;
   }
+
   .field input{
     width:100%;
     background:rgba(255,255,255,0.05);
@@ -207,10 +268,12 @@
     font-family:inherit;
     font-size:14.5px;
     outline:none;
-    transition:border-color 0.2s ease, background 0.2s ease;
   }
-  .field input::placeholder{ color:rgba(255,255,255,0.32); }
-  .field input:focus{ border-color:var(--accent); background:rgba(255,255,255,0.08); }
+
+  .field input:focus{
+    border-color:var(--accent);
+    background:rgba(255,255,255,0.08);
+  }
 
   .error-msg{
     margin-top:16px;
@@ -222,12 +285,15 @@
     border-radius:var(--radius-sm);
     display:none;
   }
-  .error-msg.show{ display:block; }
+
+  .error-msg.show{
+    display:block;
+  }
 
   .btn-primary{
     width:100%;
     margin-top:26px;
-    background:linear-gradient(145deg, var(--accent), #dc9c00);
+    background:linear-gradient(145deg,var(--accent),#dc9c00);
     color:#241900;
     border:none;
     padding:15px 18px;
@@ -237,34 +303,35 @@
     font-size:15px;
     cursor:pointer;
     box-shadow:0 10px 28px rgba(245,180,0,0.25);
-    transition:transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-  }
-  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 14px 34px rgba(245,180,0,0.32); }
-  .btn-primary:active{ transform:translateY(0); filter:brightness(0.96); }
-  .btn-primary:disabled{ opacity:0.55; cursor:not-allowed; transform:none; box-shadow:none; }
-
-  .login-card .hint{
-    margin-top:18px;
-    text-align:center;
-    font-size:11.5px;
-    color:rgba(255,255,255,0.28);
   }
 
-  /* ---------- VOTE SCREEN ---------- */
+  .btn-primary:hover{
+    transform:translateY(-1px);
+  }
+
+  .btn-primary:disabled{
+    opacity:0.55;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+  }
+
   #screen-vote .content{
     flex:1;
-    padding: 46px 6vw 60px;
+    padding:46px 6vw 60px;
     display:flex;
     flex-direction:column;
     align-items:center;
     text-align:center;
   }
+
   #screen-vote h1{
-    font-size:clamp(30px, 4vw, 46px);
+    font-size:clamp(30px,4vw,46px);
     font-weight:800;
     letter-spacing:-0.5px;
     margin-top:22px;
   }
+
   #screen-vote p.instructions{
     color:var(--text-dim);
     margin-top:12px;
@@ -274,10 +341,10 @@
   .candidate-grid{
     margin-top:49px;
     display:grid;
-    grid-template-columns:repeat(3, minmax(220px,1fr));
-    gap:39px;               /* jarak antar kotak*/
+    grid-template-columns:repeat(3,minmax(220px,1fr));
+    gap:39px;
     width:100%;
-    max-width:1500px;           /* gedein */
+    max-width:1500px;
   }
 
   .candidate-card{
@@ -285,13 +352,18 @@
     padding:20px;
     cursor:pointer;
     position:relative;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    transition:transform 0.2s ease,border-color 0.2s ease,background 0.2s ease;
   }
-  .candidate-card:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,0.25); }
+
+  .candidate-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(255,255,255,0.25);
+  }
+
   .candidate-card.selected{
     border-color:var(--accent);
     background:rgba(245,180,0,0.09);
-    box-shadow:0 0 0 1px var(--accent), 0 20px 50px rgba(245,180,0,0.15);
+    box-shadow:0 0 0 1px var(--accent),0 20px 50px rgba(245,180,0,0.15);
   }
 
   .candidate-card .top-row{
@@ -299,6 +371,7 @@
     align-items:center;
     justify-content:space-between;
   }
+
   .paslon-tag{
     display:inline-block;
     font-size:11.5px;
@@ -306,33 +379,51 @@
     letter-spacing:0.6px;
     padding:6px 12px;
     border-radius:100px;
+  }
+
+  .tag-1{
+    background:linear-gradient(120deg,#ff9d6c,#ff6b4a);
+    color:#2a0e04;
+  }
+
+  .tag-2{
+    background:linear-gradient(120deg,#ffd166,#f5b400);
     color:#241900;
   }
-  .tag-1{ background:linear-gradient(120deg,#ff9d6c,#ff6b4a); color:#2a0e04; }
-  .tag-2{ background:linear-gradient(120deg,#ffd166,#f5b400); color:#241900; }
-  .tag-3{ background:linear-gradient(120deg,#5eead4,#2dd4bf); color:#032b26; }
+
+  .tag-3{
+    background:linear-gradient(120deg,#5eead4,#2dd4bf);
+    color:#032b26;
+  }
 
   .radio-dot{
-    width:22px; height:22px;
+    width:22px;
+    height:22px;
     border-radius:50%;
     border:2px solid rgba(255,255,255,0.35);
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     flex-shrink:0;
-    transition:border-color 0.2s ease, background 0.2s ease;
   }
+
   .candidate-card.selected .radio-dot{
     border-color:var(--accent);
     background:var(--accent);
   }
+
   .radio-dot::after{
     content:"";
-    width:9px; height:9px;
+    width:9px;
+    height:9px;
     border-radius:50%;
     background:#241900;
     opacity:0;
-    transition:opacity 0.15s ease;
   }
-  .candidate-card.selected .radio-dot::after{ opacity:1; }
+
+  .candidate-card.selected .radio-dot::after{
+    opacity:1;
+  }
 
   .candidate-photo{
     width:100%;
@@ -343,16 +434,19 @@
     background:rgba(255,255,255,0.08);
     display:block;
   }
+
   .candidate-card .cname{
     margin-top:16px;
     font-size:18px;
     font-weight:800;
   }
+
   .candidate-card .cpartner{
     color:var(--text-dim);
     font-size:13.5px;
     margin-top:2px;
   }
+
   .candidate-card .cslogan{
     margin-top:10px;
     font-size:13.5px;
@@ -365,14 +459,18 @@
     width:100%;
     max-width:520px;
   }
-  .vote-action .btn-primary{ font-size:15.5px; padding:16px 18px; }
+
+  .vote-action .btn-primary{
+    font-size:15.5px;
+    padding:16px 18px;
+  }
+
   .vote-action p.note{
     margin-top:14px;
     font-size:12px;
     color:rgba(255,255,255,0.32);
   }
 
-  /* ---------- THANK YOU ---------- */
   #screen-thanks .content{
     flex:1;
     display:flex;
@@ -380,51 +478,67 @@
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding: 40px 6vw;
+    padding:40px 6vw;
   }
+
   .check-badge{
-    width:96px; height:96px;
+    width:96px;
+    height:96px;
     border-radius:50%;
-    background:linear-gradient(145deg, var(--accent), #dc9c00);
-    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(145deg,var(--accent),#dc9c00);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     box-shadow:0 16px 40px rgba(245,180,0,0.3);
-    animation: pop-in 0.55s cubic-bezier(.2,1.6,.4,1);
+    animation:pop-in 0.55s cubic-bezier(.2,1.6,.4,1);
   }
+
   @keyframes pop-in{
-    0%{ transform:scale(0.4); opacity:0; }
-    100%{ transform:scale(1); opacity:1; }
+    0%{
+      transform:scale(0.4);
+      opacity:0;
+    }
+
+    100%{
+      transform:scale(1);
+      opacity:1;
+    }
   }
-  .check-badge svg{ width:44px; height:44px; }
+
+  .check-badge svg{
+    width:44px;
+    height:44px;
+  }
 
   #screen-thanks h1{
     margin-top:32px;
-    font-size:clamp(32px, 4.4vw, 50px);
+    font-size:clamp(32px,4.4vw,50px);
     font-weight:900;
-    background:linear-gradient(120deg, #ffd7e6, var(--accent));
+    background:linear-gradient(120deg,#ffd7e6,var(--accent));
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
   }
-  #screen-thanks p.msg{
-    margin-top:16px;
-    max-width:460px;
-    color:var(--text-dim);
-    font-size:15.5px;
-    line-height:1.6;
-  }
+
   #screen-thanks p.timer{
     margin-top:26px;
     font-size:12.5px;
     color:rgba(255,255,255,0.32);
     letter-spacing:0.3px;
   }
-  #screen-thanks p.timer b{ color:var(--text-dim); font-weight:700; }
 
-  /* ---------- ADMIN ---------- */
+  #screen-thanks p.timer b{
+    color:var(--text-dim);
+    font-weight:700;
+  }
+
+  /* ADMIN */
+
   #screen-admin .content{
     flex:1;
-    padding: 40px 6vw 60px;
+    padding:40px 6vw 60px;
   }
+
   .admin-head{
     display:flex;
     align-items:flex-end;
@@ -433,182 +547,218 @@
     gap:20px;
     margin-top:26px;
   }
+
   .admin-head .eyebrow{
     font-size:12px;
     letter-spacing:1.6px;
     color:var(--accent);
     font-weight:700;
   }
+
   .admin-head h1{
-    font-size:clamp(28px, 3.6vw, 42px);
+    font-size:clamp(28px,3.6vw,42px);
     font-weight:800;
     margin-top:8px;
   }
-  .admin-head p.total{
+
+  .admin-status{
+    margin-top:10px;
+    font-size:13px;
     color:var(--text-dim);
-    margin-top:8px;
-    font-size:14.5px;
   }
-  .admin-head p.total b{ color:var(--text); font-weight:800; }
 
-  .admin-grid{
+  .admin-status.online{
+    color:var(--ok);
+  }
+
+  .admin-status.error{
+    color:var(--danger);
+  }
+
+  .results-panel{
     margin-top:34px;
-    display:grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap:26px;
-  }
-  @media (max-width: 1000px){
-    .admin-grid{ grid-template-columns:1fr; }
+    padding:30px 32px;
   }
 
-  .results-panel{ padding:30px 32px; }
-  .result-row{ margin-top:26px; }
-  .result-row:first-child{ margin-top:0; }
-  .result-row .r-top{
+  .result-row{
+    margin-top:26px;
+  }
+
+  .result-row:first-child{
+    margin-top:0;
+  }
+
+  .result-top{
     display:flex;
     align-items:center;
     gap:14px;
   }
-  .r-photo{
-    width:44px; height:44px;
+
+  .result-photo{
+    width:52px;
+    height:52px;
     border-radius:12px;
     object-fit:cover;
     background:rgba(255,255,255,0.08);
     flex-shrink:0;
   }
-  .r-info{ flex:1; min-width:0; }
-  .r-info .r-name{ font-weight:700; font-size:15px; }
-  .r-info .r-sub{ font-size:12.5px; color:var(--text-dim); margin-top:1px; }
-  .r-count{ text-align:right; flex-shrink:0; }
-  .r-count .r-votes{ font-size:20px; font-weight:800; font-variant-numeric: tabular-nums; }
-  .r-count .r-pct{ font-size:12.5px; color:var(--text-dim); font-variant-numeric: tabular-nums; }
 
-  .bar-track{
-    margin-top:12px;
-    height:10px;
+  .result-info{
+    flex:1;
+    min-width:0;
+  }
+
+  .result-tag{
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:0.7px;
+  }
+
+  .result-name{
+    font-size:15px;
+    font-weight:700;
+    margin-top:2px;
+  }
+
+  .result-partner{
+    font-size:12.5px;
+    color:var(--text-dim);
+    margin-top:2px;
+  }
+
+  .result-votes{
+    text-align:right;
+    flex-shrink:0;
+  }
+
+  .result-votes .number{
+    font-size:30px;
+    font-weight:900;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .result-votes .label{
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:0.7px;
+    text-transform:uppercase;
+  }
+
+  .result-bar-track{
+    margin-top:14px;
+    height:12px;
     border-radius:100px;
     background:rgba(255,255,255,0.07);
     overflow:hidden;
   }
-  .bar-fill{
+
+  .result-bar{
     height:100%;
-    border-radius:100px;
     width:0%;
-    transition: width 0.7s cubic-bezier(.2,.8,.2,1);
+    border-radius:100px;
+    transition:width 0.5s ease;
   }
-  .fill-1{ background:linear-gradient(90deg,#ff9d6c,#ff6b4a); }
-  .fill-2{ background:linear-gradient(90deg,#ffd166,#f5b400); }
-  .fill-3{ background:linear-gradient(90deg,#5eead4,#2dd4bf); }
 
-  .leader-panel{
-    padding:30px 32px;
-    display:flex;
-    flex-direction:column;
+  .bar-1{
+    background:linear-gradient(90deg,#ff9d6c,#ff6b4a);
   }
-  .leader-panel .eyebrow{
-    font-size:12px;
-    letter-spacing:1.6px;
-    color:var(--text-dim);
-    font-weight:700;
-  }
-  .leader-panel .leader-name{
-    margin-top:14px;
-    font-size:24px;
-    font-weight:800;
-    color:var(--accent);
-  }
-  .leader-panel .leader-partner{
-    color:var(--text-dim);
-    font-size:14px;
-    margin-top:2px;
-  }
-  .leader-panel .leader-pct{
-    margin-top:18px;
-    font-size:58px;
-    font-weight:900;
-    line-height:1;
-  }
-  .leader-panel .leader-pct span{ font-size:26px; color:var(--text-dim); font-weight:700; }
 
-  .mini-bars{
-    margin-top:auto;
-    padding-top:30px;
-    display:flex;
-    align-items:flex-end;
-    gap:16px;
-    height:150px;
+  .bar-2{
+    background:linear-gradient(90deg,#ffd166,#f5b400);
   }
-  .mini-bar{
-    flex:1;
+
+  .bar-3{
+    background:linear-gradient(90deg,#5eead4,#2dd4bf);
+  }
+
+  .total-row{
+    margin-top:34px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
     display:flex;
-    flex-direction:column;
     align-items:center;
-    justify-content:flex-end;
-    height:100%;
-  }
-  .mini-bar .bar{
-    width:100%;
-    border-radius:10px 10px 4px 4px;
-    transition:height 0.7s cubic-bezier(.2,.8,.2,1);
-  }
-  .mini-bar .lbl{
-    margin-top:10px;
-    font-size:11.5px;
-    color:var(--text-dim);
-    font-weight:700;
-    letter-spacing:0.5px;
+    justify-content:space-between;
+    gap:20px;
   }
 
-  footer.admin-foot{
-    margin-top:26px;
-    font-size:12px;
-    color:rgba(255,255,255,0.28);
+  .total-label{
+    font-size:16px;
+    font-weight:800;
   }
 
-  @media (max-width: 720px){
-    header.top{ padding: 22px 5vw 0; }
-    .candidate-grid{ grid-template-columns:1fr; }
-    .results-panel, .leader-panel{ padding:24px; }
-    #screen-vote .content, #screen-admin .content{ padding:30px 5vw 50px; }
+  .total-number{
+    font-size:34px;
+    font-weight:900;
+    color:var(--accent);
+    font-variant-numeric:tabular-nums;
+  }
+
+  @media (max-width:720px){
+    header.top{
+      padding:22px 5vw 0;
+    }
+
+    .candidate-grid{
+      grid-template-columns:1fr;
+    }
+
+    #screen-vote .content,
+    #screen-admin .content{
+      padding:30px 5vw 50px;
+    }
+
+    .results-panel{
+      padding:24px;
+    }
+
+    .result-votes .number{
+      font-size:25px;
+    }
   }
 </style>
 </head>
+
 <body>
 
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
-<!-- ============ SCREEN 1: LOGIN ============ -->
+<!-- LOGIN -->
+
 <section id="screen-login" class="screen active">
   <header class="top">
     <div class="brand">
       <div class="mark">
-    <img src="images/logodb.png" alt="SMADB">
-    <img src="images/dbsmart.png" alt="SMART">
-    <img src="images/ilydb.png" alt="SMAILY">
+        <img src="images/logodb.png" alt="SMADB">
+        <img src="images/dbsmart.png" alt="SMART">
+        <img src="images/ilydb.png" alt="SMAILY">
       </div>
     </div>
-   <div class="logo-row">
-  <img src="images/logompk.png" alt="Logo 3">
-  <img src="images/logoosis.png" alt="Logo 4">
-  <img src="images/logous.png" alt="Logo 5">
-</div>
+
+    <div class="logo-row">
+      <img src="images/logompk.png" alt="Logo 3">
+      <img src="images/logoosis.png" alt="Logo 4">
+      <img src="images/logous.png" alt="Logo 5">
+    </div>
   </header>
 
   <div class="content">
     <div class="login-copy">
       <h1>Pemilihan Ketua<br><span>OSIS/MPK</span></h1>
       <p class="desc"></p>
+
       <div class="stat-row">
         <div class="stat">
           <div class="num" id="stat-registered"></div>
           <div class="lbl"></div>
         </div>
+
         <div class="stat">
           <div class="num"></div>
           <div class="lbl"></div>
         </div>
+
         <div class="stat">
           <div class="num"></div>
           <div class="lbl"></div>
@@ -623,81 +773,118 @@
       <form id="login-form" novalidate>
         <div class="field">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Masukkan username" autocomplete="off" required>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Masukkan username"
+            autocomplete="off"
+            required
+          >
         </div>
+
         <div class="field">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Masukkan password"
+            required
+          >
         </div>
 
-        <div class="error-msg" id="login-error">Username atau password salah. Silakan coba lagi.</div>
+        <div class="error-msg" id="login-error">
+          Username atau password salah. Silakan coba lagi.
+        </div>
 
-        <button type="submit" class="btn-primary" id="login-submit">Masuk</button>
+        <button type="submit" class="btn-primary" id="login-submit">
+          Masuk
+        </button>
       </form>
-
+    </div>
   </div>
 </section>
 
-<!-- ============ SCREEN 2: VOTE ============ -->
+<!-- VOTING -->
+
 <section id="screen-vote" class="screen">
   <header class="top">
     <div class="brand">
-       <div class="mark">
-    <img src="images/logodb.png" alt="SMADB">
-    <img src="images/dbsmart.png" alt="SMART">
-    <img src="images/ilydb.png" alt="SMAILY">
+      <div class="mark">
+        <img src="images/logodb.png" alt="SMADB">
+        <img src="images/dbsmart.png" alt="SMART">
+        <img src="images/ilydb.png" alt="SMAILY">
       </div>
     </div>
-   <div class="logo-row">
-  <img src="images/logompk.png" alt="Logo 3">
-  <img src="images/logoosis.png" alt="Logo 4">
-  <img src="images/logous.png" alt="Logo 5">
-</div>
-</div>
+
+    <div class="logo-row">
+      <img src="images/logompk.png" alt="Logo 3">
+      <img src="images/logoosis.png" alt="Logo 4">
+      <img src="images/logous.png" alt="Logo 5">
+    </div>
   </header>
 
   <div class="content">
     <h1>Pilih satu pasangan calon ketua osis</h1>
     <p class="instructions"></p>
 
-    <div class="candidate-grid" id="candidate-grid">
-      <!-- candidate cards injected by JS -->
-    </div>
+    <div class="candidate-grid" id="candidate-grid"></div>
 
     <div class="vote-action">
-      <button class="btn-primary" id="confirm-vote-btn" disabled>Pilih salah satu pasangan calon</button>
+      <button class="btn-primary" id="confirm-vote-btn" disabled>
+        Pilih salah satu pasangan calon
+      </button>
+
       <p class="note"></p>
     </div>
   </div>
 </section>
 
-<!-- ============ SCREEN 3: THANK YOU ============ -->
+<!-- THANK YOU -->
+
 <section id="screen-thanks" class="screen">
   <div class="content">
     <div class="check-badge">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M4 12.5L9.5 18L20 6" stroke="#241900" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path
+          d="M4 12.5L9.5 18L20 6"
+          stroke="#241900"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
     </div>
+
     <h1>Terima kasih</h1>
-    <p class="timer" style="display:none;">Kembali ke bilik suara dalam <b id="thanks-countdown">5</b> detik&hellip;</p>
+
+    <p class="timer">
+      Kembali ke bilik suara dalam
+      <b id="thanks-countdown">5</b>
+      detik&hellip;
+    </p>
   </div>
 </section>
 
-<!-- ============ SCREEN 4: ADMIN ============ -->
+<!-- ADMIN -->
+
 <section id="screen-admin" class="screen">
   <header class="top">
     <div class="brand">
-       <div class="mark">
-    <img src="images/logodb.png" alt="SMADB">
-    <img src="images/dbsmart.png" alt="SMART">
-    <img src="images/ilydb.png" alt="SMAILY">
-    <img src="images/logompk.png" alt="Logo 3">
-    <img src="images/logoosis.png" alt="Logo 4">
-    <img src="images/logous.png" alt="Logo 5">
+      <div class="mark">
+        <img src="images/logodb.png" alt="SMADB">
+        <img src="images/dbsmart.png" alt="SMART">
+        <img src="images/ilydb.png" alt="SMAILY">
+        <img src="images/logompk.png" alt="Logo 3">
+        <img src="images/logoosis.png" alt="Logo 4">
+        <img src="images/logous.png" alt="Logo 5">
       </div>
     </div>
-    <button class="btn-link" id="logout-btn">Keluar</button>
+
+    <button class="btn-link" id="logout-btn">
+      Keluar
+    </button>
   </header>
 
   <div class="content">
@@ -705,295 +892,860 @@
       <div>
         <div class="eyebrow">ADMIN ONLY</div>
         <h1>Hasil Penghitungan Suara</h1>
-        <p class="total">Total <b id="admin-total">0</b> suara masuk</p>
+        <div class="admin-status" id="admin-status">
+          Menyiapkan hasil...
+        </div>
       </div>
     </div>
 
-    <div class="admin-grid">
-      <div class="card results-panel" id="results-panel">
-        <!-- result rows injected by JS -->
+    <div class="card results-panel">
+
+      <div class="result-row">
+        <div class="result-top">
+          <img
+            class="result-photo"
+            src="images/paslon1.png"
+            alt="Paslon 01"
+          >
+
+          <div class="result-info">
+            <div class="result-tag">PASLON 01</div>
+            <div class="result-name">Immaculata Paksi</div>
+            <div class="result-partner">&amp; Aditia Maulana</div>
+          </div>
+
+          <div class="result-votes">
+            <div class="number" id="result-1">0</div>
+            <div class="label">suara</div>
+          </div>
+        </div>
+
+        <div class="result-bar-track">
+          <div class="result-bar bar-1" id="bar-1"></div>
+        </div>
       </div>
 
-      <div class="card leader-panel" id="leader-panel">
-        <!-- leader + mini bar chart injected by JS -->
+      <div class="result-row">
+        <div class="result-top">
+          <img
+            class="result-photo"
+            src="images/paslon2.png"
+            alt="Paslon 02"
+          >
+
+          <div class="result-info">
+            <div class="result-tag">PASLON 02</div>
+            <div class="result-name">Yeriel Febrian</div>
+            <div class="result-partner">&amp; Kenzie Letichia</div>
+          </div>
+
+          <div class="result-votes">
+            <div class="number" id="result-2">0</div>
+            <div class="label">suara</div>
+          </div>
+        </div>
+
+        <div class="result-bar-track">
+          <div class="result-bar bar-2" id="bar-2"></div>
+        </div>
       </div>
+
+      <div class="result-row">
+        <div class="result-top">
+          <img
+            class="result-photo"
+            src="images/paslon3.png"
+            alt="Paslon 03"
+          >
+
+          <div class="result-info">
+            <div class="result-tag">PASLON 03</div>
+            <div class="result-name">Vinta Ngesti</div>
+            <div class="result-partner">&amp; Darius</div>
+          </div>
+
+          <div class="result-votes">
+            <div class="number" id="result-3">0</div>
+            <div class="label">suara</div>
+          </div>
+        </div>
+
+        <div class="result-bar-track">
+          <div class="result-bar bar-3" id="bar-3"></div>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div class="total-label">
+          TOTAL SUARA MASUK
+        </div>
+
+        <div class="total-number" id="result-total">
+          0
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<script>
-/* =======================================================================
-   DATA
-   To wire this up to Supabase later:
-   - Replace CANDIDATES with a fetch from your `candidates` table.
-   - Replace the in-memory `votes` object with reads/writes to a `votes`
-     table (e.g. one row per vote, or a counter per candidate).
-   - Replace castVote() body with a supabase.from('votes').insert(...) call.
-   - Replace refreshAdminView()'s data source with a supabase realtime
-     subscription (supabase.channel(...).on('postgres_changes', ...)) so
-     the admin screen updates live across devices.
-   - Replace the two hardcoded login checks in handleLogin() with a real
-     auth/lookup call (e.g. supabase.from('users').select().eq(...)).
-   ======================================================================= */
+<script type="module">
+  import {
+    createClient
+  } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  const SUPABASE_URL =
+    'https://wzdiyuvhgmhrzpkvxypr.supabase.co';
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    'sb_publishable_LnuDmfxpBdz91mF1-nvB1A_4XZmt3it';
+
+  const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
   const CANDIDATES = [
     {
-      id: 1,
-      tag: 'PASLON 01',
-      tagClass: 'tag-1',
-      fillClass: 'fill-1',
-      barColor: '#ff6b4a',
-      name: 'Immaculata Paksi',
-      partner: '& Aditia Maulana',
-      slogan: '',
-      photo: 'images/paslon1.png'
+      id:1,
+      tag:'PASLON 01',
+      tagClass:'tag-1',
+      name:'Immaculata Paksi',
+      partner:'& Aditia Maulana',
+      slogan:'',
+      photo:'images/paslon1.png'
     },
     {
-      id: 2,
-      tag: 'PASLON 02',
-      tagClass: 'tag-2',
-      fillClass: 'fill-2',
-      barColor: '#f5b400',
-      name: 'Yeriel Febrian',
-      partner: '& Kenzie Letichia',
-      slogan: '',
-      photo: 'images/paslon2.png'
+      id:2,
+      tag:'PASLON 02',
+      tagClass:'tag-2',
+      name:'Yeriel Febrian',
+      partner:'& Kenzie Letichia',
+      slogan:'',
+      photo:'images/paslon2.png'
     },
     {
-      id: 3,
-      tag: 'PASLON 03',
-      tagClass: 'tag-3',
-      fillClass: 'fill-3',
-      barColor: '#2dd4bf',
-      name: 'Vinta Ngesti',
-      partner: '& Darius',
-      slogan: '',
-      photo: 'images/paslon3.png'
+      id:3,
+      tag:'PASLON 03',
+      tagClass:'tag-3',
+      name:'Vinta Ngesti',
+      partner:'& Darius',
+      slogan:'',
+      photo:'images/paslon3.png'
     }
   ];
 
-  // In-memory vote tally. Swap this for a Supabase-backed source later.
-  let votes = { 1: 300, 2: 450, 3: 350 };
-
   let selectedCandidateId = null;
+
+  let currentUsername = '';
+  let currentPassword = '';
+
+  let currentAdminToken = '';
+  let adminResultsChannel = null;
+
   let thanksTimerInterval = null;
   let thanksRevertTimeout = null;
 
   const screens = {
-    login: document.getElementById('screen-login'),
-    vote: document.getElementById('screen-vote'),
-    thanks: document.getElementById('screen-thanks'),
-    admin: document.getElementById('screen-admin')
+    login:document.getElementById('screen-login'),
+    vote:document.getElementById('screen-vote'),
+    thanks:document.getElementById('screen-thanks'),
+    admin:document.getElementById('screen-admin')
   };
 
   function showScreen(name){
-    Object.values(screens).forEach(s => s.classList.remove('active'));
+    Object.values(screens).forEach(function(screen){
+      screen.classList.remove('active');
+    });
+
     screens[name].classList.add('active');
   }
 
   /* ---------------- LOGIN ---------------- */
 
-  const loginForm = document.getElementById('login-form');
-  const loginError = document.getElementById('login-error');
+  const loginForm =
+    document.getElementById('login-form');
 
-  loginForm.addEventListener('submit', function(e){
-    e.preventDefault();
+  const loginError =
+    document.getElementById('login-error');
+
+  loginForm.addEventListener('submit', function(event){
+    event.preventDefault();
     handleLogin();
   });
 
-  function handleLogin(){
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+  async function handleLogin(){
+    const username =
+      document.getElementById('username').value.trim();
+
+    const password =
+      document.getElementById('password').value.trim();
+
+    const loginSubmit =
+      document.getElementById('login-submit');
 
     loginError.classList.remove('show');
 
-    // ---- Replace this block with a real Supabase auth/lookup call ----
-    if (username === '1' && password === '1') {
-      selectedCandidateId = null;
-      renderCandidates();
-      updateConfirmButton();
-      showScreen('vote');
+    if(!username || !password){
+      loginError.classList.add('show');
       return;
     }
-    if (username === '2' && password === '2') {
-      refreshAdminView();
-      showScreen('admin');
-      return;
-    }
-    // --------------------------------------------------------------------
 
-    loginError.classList.add('show');
+    loginSubmit.disabled = true;
+
+    try{
+      const response = await fetch(
+        SUPABASE_URL + '/functions/v1/auth',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':'application/json',
+            'apikey':SUPABASE_PUBLISHABLE_KEY,
+            'Authorization':
+              'Bearer ' + SUPABASE_PUBLISHABLE_KEY
+          },
+
+          body:JSON.stringify({
+            username:username,
+            password:password
+          })
+        }
+      );
+
+      const contentType =
+        response.headers.get('content-type') || '';
+
+      /*
+       * Admin response:
+       * {
+       *   role: "admin",
+       *   access_token: "..."
+       * }
+       */
+
+      if(contentType.includes('application/json')){
+        const result =
+          await response.json();
+
+        if(
+          response.ok &&
+          result.role === 'admin' &&
+          result.access_token
+        ){
+          currentUsername = username;
+          currentPassword = password;
+          currentAdminToken =
+            result.access_token;
+
+          await setupAdminRealtime();
+
+          showScreen('admin');
+
+          return;
+        }
+
+        loginError.classList.add('show');
+        return;
+      }
+
+      /*
+       * Voter / failed response:
+       *
+       * "voter"
+       * "false"
+       */
+
+      const result =
+        (await response.text()).trim();
+
+      if(
+        response.ok &&
+        result === 'voter'
+      ){
+        currentUsername = username;
+        currentPassword = password;
+
+        selectedCandidateId = null;
+
+        renderCandidates();
+        updateConfirmButton();
+
+        showScreen('vote');
+
+        return;
+      }
+
+      loginError.classList.add('show');
+
+    }catch(error){
+      console.error(
+        'Login request failed:',
+        error
+      );
+
+      loginError.classList.add('show');
+
+    }finally{
+      loginSubmit.disabled = false;
+    }
   }
 
-  document.getElementById('logout-btn').addEventListener('click', function(){
-    // Full reload returns to the login screen, matching "reload = login" behavior.
-    window.location.reload();
-  });
+  /* ---------------- ADMIN REALTIME ---------------- */
+
+  const adminStatus =
+    document.getElementById('admin-status');
+
+  async function setupAdminRealtime(){
+    adminStatus.textContent =
+      'Menghubungkan ke hasil realtime...';
+
+    adminStatus.className =
+      'admin-status';
+
+    if(adminResultsChannel){
+      await supabase.removeChannel(
+        adminResultsChannel
+      );
+
+      adminResultsChannel = null;
+    }
+
+    if(!currentAdminToken){
+      throw new Error(
+        'Admin token tidak tersedia.'
+      );
+    }
+
+    /*
+     * Give Supabase Realtime the custom signed
+     * JWT returned by the auth Edge Function.
+     */
+    supabase.realtime.setAuth(
+      currentAdminToken
+    );
+
+    /*
+     * Initial read.
+     * This gives the admin the current values
+     * immediately when entering the page.
+     */
+    const {
+      data: initialRows,
+      error: initialError
+    } = await supabase
+      .from('popul')
+      .select('calon, pop')
+      .order('calon');
+
+    if(initialError){
+      console.error(
+        'Initial popul read failed:',
+        initialError
+      );
+
+      adminStatus.textContent =
+        'Gagal membaca hasil suara.';
+
+      adminStatus.className =
+        'admin-status error';
+
+      throw initialError;
+    }
+
+    updateAdminResults(
+      initialRows || []
+    );
+
+    /*
+     * Realtime subscription.
+     *
+     * Only UPDATE is needed because insert
+     * changes existing popul rows.
+     */
+    adminResultsChannel =
+      supabase
+        .channel('admin-popul-results')
+
+        .on(
+          'postgres_changes',
+          {
+            event:'UPDATE',
+            schema:'public',
+            table:'popul'
+          },
+          function(payload){
+            updateAdminRow(
+              payload.new
+            );
+          }
+        )
+
+        .subscribe(
+          function(status, error){
+            console.log(
+              'Realtime status:',
+              status
+            );
+
+            if(status === 'SUBSCRIBED'){
+              adminStatus.textContent =
+                'Realtime aktif';
+
+              adminStatus.className =
+                'admin-status online';
+
+              return;
+            }
+
+            if(
+              status === 'CHANNEL_ERROR' ||
+              status === 'TIMED_OUT'
+            ){
+              console.error(
+                'Realtime error:',
+                error
+              );
+
+              adminStatus.textContent =
+                'Realtime gagal terhubung.';
+
+              adminStatus.className =
+                'admin-status error';
+            }
+          }
+        );
+  }
+
+  function updateAdminResults(rows){
+    rows.forEach(function(row){
+      updateAdminRow(row);
+    });
+  }
+
+  function updateAdminRow(row){
+    if(!row){
+      return;
+    }
+
+    const calon =
+      String(row.calon);
+
+    const pop =
+      Number(row.pop);
+
+    if(
+      !Number.isFinite(pop)
+    ){
+      return;
+    }
+
+    if(
+      calon === '1' ||
+      calon === '2' ||
+      calon === '3'
+    ){
+      updateCandidateResult(
+        Number(calon),
+        pop
+      );
+
+      return;
+    }
+
+    if(calon === 'total'){
+      document.getElementById(
+        'result-total'
+      ).textContent =
+        pop.toLocaleString('id-ID');
+    }
+  }
+
+  function updateCandidateResult(
+    calon,
+    pop
+  ){
+    const valueElement =
+      document.getElementById(
+        'result-' + calon
+      );
+
+    const barElement =
+      document.getElementById(
+        'bar-' + calon
+      );
+
+    if(valueElement){
+      valueElement.textContent =
+        pop.toLocaleString('id-ID');
+    }
+
+    /*
+     * The bars are visual only.
+     * They are scaled relative to the highest
+     * current vote count; no percentage is shown.
+     */
+    if(barElement){
+      updateBars();
+    }
+  }
+
+  function updateBars(){
+    const values = [1,2,3].map(function(id){
+      const element =
+        document.getElementById(
+          'result-' + id
+        );
+
+      return element
+        ? Number(
+            element.textContent.replace(
+              /\./g,
+              ''
+            )
+          ) || 0
+        : 0;
+    });
+
+    const maxValue =
+      Math.max(...values,1);
+
+    values.forEach(function(value,index){
+      const id = index + 1;
+
+      const bar =
+        document.getElementById(
+          'bar-' + id
+        );
+
+      if(bar){
+        const width =
+          Math.max(
+            4,
+            Math.round(
+              (value / maxValue) * 100
+            )
+          );
+
+        bar.style.width =
+          width + '%';
+      }
+    });
+  }
+
+  /* ---------------- LOGOUT ---------------- */
+
+  document
+    .getElementById('logout-btn')
+    .addEventListener(
+      'click',
+      async function(){
+        if(adminResultsChannel){
+          await supabase.removeChannel(
+            adminResultsChannel
+          );
+
+          adminResultsChannel = null;
+        }
+
+        supabase.realtime.setAuth('');
+
+        currentAdminToken = '';
+        currentUsername = '';
+        currentPassword = '';
+        selectedCandidateId = null;
+
+        window.location.reload();
+      }
+    );
 
   /* ---------------- VOTE SCREEN ---------------- */
 
-  const candidateGrid = document.getElementById('candidate-grid');
-  const confirmBtn = document.getElementById('confirm-vote-btn');
+  const candidateGrid =
+    document.getElementById(
+      'candidate-grid'
+    );
+
+  const confirmBtn =
+    document.getElementById(
+      'confirm-vote-btn'
+    );
 
   function renderCandidates(){
-    candidateGrid.innerHTML = CANDIDATES.map(function(c){
-      return (
-        '<div class="card candidate-card" data-id="' + c.id + '" tabindex="0" role="button" aria-pressed="false">' +
-          '<div class="top-row">' +
-            '<span class="paslon-tag ' + c.tagClass + '">' + c.tag + '</span>' +
-            '<span class="radio-dot"></span>' +
-          '</div>' +
-          '<img class="candidate-photo" src="' + c.photo + '" alt="Foto ' + c.name + '">' +
-          '<div class="cname">' + c.name + '</div>' +
-          '<div class="cpartner">' + c.partner + '</div>' +
-          '<div class="cslogan">' + c.slogan + '</div>' +
-        '</div>'
-      );
-    }).join('');
+    candidateGrid.innerHTML =
+      CANDIDATES.map(function(c){
+        return (
+          '<div class="card candidate-card" ' +
+          'data-id="' + c.id + '" ' +
+          'tabindex="0" ' +
+          'role="button" ' +
+          'aria-pressed="false">' +
 
-    candidateGrid.querySelectorAll('.candidate-card').forEach(function(card){
-      card.addEventListener('click', function(){
-        selectCandidate(parseInt(card.getAttribute('data-id'), 10));
+            '<div class="top-row">' +
+
+              '<span class="paslon-tag ' +
+                c.tagClass + '">' +
+                c.tag +
+              '</span>' +
+
+              '<span class="radio-dot"></span>' +
+
+            '</div>' +
+
+            '<img class="candidate-photo" ' +
+              'src="' + c.photo + '" ' +
+              'alt="Foto ' + c.name + '">' +
+
+            '<div class="cname">' +
+              c.name +
+            '</div>' +
+
+            '<div class="cpartner">' +
+              c.partner +
+            '</div>' +
+
+            '<div class="cslogan">' +
+              c.slogan +
+            '</div>' +
+
+          '</div>'
+        );
+      }).join('');
+
+    candidateGrid
+      .querySelectorAll('.candidate-card')
+      .forEach(function(card){
+
+        card.addEventListener(
+          'click',
+          function(){
+            selectCandidate(
+              parseInt(
+                card.getAttribute('data-id'),
+                10
+              )
+            );
+          }
+        );
+
+        card.addEventListener(
+          'keydown',
+          function(event){
+            if(
+              event.key === 'Enter' ||
+              event.key === ' '
+            ){
+              event.preventDefault();
+
+              selectCandidate(
+                parseInt(
+                  card.getAttribute('data-id'),
+                  10
+                )
+              );
+            }
+          }
+        );
       });
-      card.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          selectCandidate(parseInt(card.getAttribute('data-id'), 10));
-        }
-      });
-    });
   }
 
   function selectCandidate(id){
     selectedCandidateId = id;
-    candidateGrid.querySelectorAll('.candidate-card').forEach(function(card){
-      const isSelected = parseInt(card.getAttribute('data-id'), 10) === id;
-      card.classList.toggle('selected', isSelected);
-      card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
-    });
+
+    candidateGrid
+      .querySelectorAll('.candidate-card')
+      .forEach(function(card){
+
+        const isSelected =
+          parseInt(
+            card.getAttribute('data-id'),
+            10
+          ) === id;
+
+        card.classList.toggle(
+          'selected',
+          isSelected
+        );
+
+        card.setAttribute(
+          'aria-pressed',
+          isSelected
+            ? 'true'
+            : 'false'
+        );
+      });
+
     updateConfirmButton();
   }
 
   function updateConfirmButton(){
-    if (selectedCandidateId === null) {
+    if(
+      selectedCandidateId === null
+    ){
       confirmBtn.disabled = true;
-      confirmBtn.textContent = 'Pilih Paslon';
-    } else {
-      const c = CANDIDATES.find(function(x){ return x.id === selectedCandidateId; });
+      confirmBtn.textContent =
+        'Pilih Paslon';
+
+      return;
+    }
+
+    const candidate =
+      CANDIDATES.find(function(c){
+        return c.id ===
+          selectedCandidateId;
+      });
+
+    confirmBtn.disabled = false;
+
+    confirmBtn.textContent =
+      'Kirim suara untuk ' +
+      candidate.name.split(' ')[0];
+  }
+
+  confirmBtn.addEventListener(
+    'click',
+    function(){
+      if(
+        selectedCandidateId === null
+      ){
+        return;
+      }
+
+      castVote(
+        selectedCandidateId
+      );
+    }
+  );
+
+  /* ---------------- INSERT VOTE ---------------- */
+
+  async function castVote(candidateId){
+    if(
+      !currentUsername ||
+      !currentPassword
+    ){
+      return;
+    }
+
+    confirmBtn.disabled = true;
+
+    try{
+      const response = await fetch(
+        SUPABASE_URL +
+        '/functions/v1/insert',
+        {
+          method:'POST',
+
+          headers:{
+            'Content-Type':'application/json',
+            'apikey':
+              SUPABASE_PUBLISHABLE_KEY,
+            'Authorization':
+              'Bearer ' +
+              SUPABASE_PUBLISHABLE_KEY
+          },
+
+          body:JSON.stringify({
+            username:
+              currentUsername,
+
+            password:
+              currentPassword,
+
+            calon:
+              candidateId
+          })
+        }
+      );
+
+      const result =
+        (await response.text()).trim();
+
+      if(
+        response.ok &&
+        result === 'true'
+      ){
+        goToThanks();
+        return;
+      }
+
       confirmBtn.disabled = false;
-      confirmBtn.textContent = 'Kirim suara untuk ' + c.name.split(' ')[0];
+
+      alert(
+        'Suara gagal dikirim. Silakan coba lagi.'
+      );
+
+    }catch(error){
+      console.error(
+        'Vote submission failed:',
+        error
+      );
+
+      confirmBtn.disabled = false;
+
+      alert(
+        'Suara gagal dikirim. Silakan coba lagi.'
+      );
     }
   }
 
-  confirmBtn.addEventListener('click', function(){
-    if (selectedCandidateId === null) return;
-    castVote(selectedCandidateId);
-  });
-
-  function castVote(candidateId){
-    // ---- Replace with: await supabase.from('votes').insert({ candidate_id: candidateId }) ----
-    votes[candidateId] = (votes[candidateId] || 0) + 1;
-    // -------------------------------------------------------------------------------------------
-
-    confirmBtn.disabled = true;
-    goToThanks();
-  }
-
-  /* ---------------- THANK YOU SCREEN ---------------- */
+  /* ---------------- THANK YOU ---------------- */
 
   function goToThanks(){
     showScreen('thanks');
 
     let secondsLeft = 5;
-    const countdownEl = document.getElementById('thanks-countdown');
-    countdownEl.textContent = secondsLeft;
 
-    clearInterval(thanksTimerInterval);
-    clearTimeout(thanksRevertTimeout);
+    const countdownEl =
+      document.getElementById(
+        'thanks-countdown'
+      );
 
-    thanksTimerInterval = setInterval(function(){
-      secondsLeft -= 1;
-      if (secondsLeft <= 0) {
-        clearInterval(thanksTimerInterval);
-      } else {
-        countdownEl.textContent = secondsLeft;
-      }
-    }, 1000);
+    countdownEl.textContent =
+      secondsLeft;
 
-    thanksRevertTimeout = setTimeout(function(){
-      clearInterval(thanksTimerInterval);
-      selectedCandidateId = null;
-      renderCandidates();
-      updateConfirmButton();
-      showScreen('vote'); // reverts to the voting screen, not login
-    }, 5000);
+    clearInterval(
+      thanksTimerInterval
+    );
+
+    clearTimeout(
+      thanksRevertTimeout
+    );
+
+    thanksTimerInterval =
+      setInterval(function(){
+
+        secondsLeft -= 1;
+
+        if(secondsLeft <= 0){
+          clearInterval(
+            thanksTimerInterval
+          );
+        }else{
+          countdownEl.textContent =
+            secondsLeft;
+        }
+
+      },1000);
+
+    thanksRevertTimeout =
+      setTimeout(function(){
+
+        clearInterval(
+          thanksTimerInterval
+        );
+
+        selectedCandidateId =
+          null;
+
+        renderCandidates();
+        updateConfirmButton();
+
+        showScreen('vote');
+
+      },5000);
   }
 
-  /* ---------------- ADMIN SCREEN ---------------- */
-
-  const resultsPanel = document.getElementById('results-panel');
-  const leaderPanel = document.getElementById('leader-panel');
-  const adminTotal = document.getElementById('admin-total');
-
-  function refreshAdminView(){
-    // ---- Replace with a Supabase query / realtime subscription result ----
-    const totalVotes = CANDIDATES.reduce(function(sum, c){ return sum + (votes[c.id] || 0); }, 0);
-    // ------------------------------------------------------------------------
-
-    adminTotal.textContent = totalVotes.toLocaleString('id-ID');
-
-    const withPct = CANDIDATES.map(function(c){
-      const count = votes[c.id] || 0;
-      const pct = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
-      return Object.assign({}, c, { count: count, pct: pct });
-    });
-
-    // Results list
-    resultsPanel.innerHTML = withPct.map(function(c){
-      return (
-        '<div class="result-row">' +
-          '<div class="r-top">' +
-            '<img class="r-photo" src="' + c.photo + '" alt="">' +
-            '<div class="r-info">' +
-              '<div class="r-name">' + c.tag + '</div>' +
-              '<div class="r-sub">' + c.name + '</div>' +
-            '</div>' +
-            '<div class="r-count">' +
-              '<div class="r-votes">' + c.count.toLocaleString('id-ID') + '</div>' +
-              '<div class="r-pct">' + c.pct + '%</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="bar-track"><div class="bar-fill ' + c.fillClass + '" style="width:' + c.pct + '%"></div></div>' +
-        '</div>'
-      );
-    }).join('');
-
-    // Leader panel
-    const leader = withPct.reduce(function(best, c){
-      return c.count > best.count ? c : best;
-    }, withPct[0]);
-
-    leaderPanel.innerHTML =
-      '<div class="eyebrow">SEMENTARA MEMIMPIN</div>' +
-      '<div class="leader-name">' + leader.tag + '</div>' +
-      '<div class="leader-partner">' + leader.name + '</div>' +
-      '<div class="leader-pct">' + leader.pct + '<span>%</span></div>' +
-      '<div class="mini-bars" id="mini-bars"></div>';
-
-    const miniBars = document.getElementById('mini-bars');
-    const maxCount = Math.max.apply(null, withPct.map(function(c){ return c.count; }).concat([1]));
-    miniBars.innerHTML = withPct.map(function(c){
-      const heightPct = Math.max(6, Math.round((c.count / maxCount) * 100));
-      return (
-        '<div class="mini-bar">' +
-          '<div class="bar" style="height:' + heightPct + '%; background:' + c.barColor + '"></div>' +
-          '<div class="lbl">0' + c.id + '</div>' +
-        '</div>'
-      );
-    }).join('');
-  }
-
-  // Initial render of the candidate list so it's ready as soon as someone logs in.
   renderCandidates();
 </script>
 
