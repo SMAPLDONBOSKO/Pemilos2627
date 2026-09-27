@@ -170,7 +170,7 @@
 
   .login-headline{
     max-width:600px;
-    margin:auto 0;
+    margin-top:auto;
     padding-bottom:8px;
   }
 
@@ -307,7 +307,7 @@
   }
 
   /* =================================================================
-     VOTE
+     VOTE — styled like an actual ballot paper, not a generic card grid
   ================================================================= */
 
   #screen-vote .top{
@@ -326,8 +326,27 @@
   }
 
   #screen-vote .masthead{
-    max-width:640px;
+    max-width:660px;
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
   }
+
+  #screen-vote .masthead .ballot-icon{
+    flex-shrink:0;
+    width:46px;
+    height:46px;
+    margin-top:2px;
+    border-radius:50%;
+    background:linear-gradient(150deg, var(--gold-500), var(--gold-600));
+    color:var(--gold-ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 12px 26px rgba(245,180,0,0.22);
+  }
+
+  #screen-vote .masthead .ballot-icon svg{ width:22px; height:22px; }
 
   #screen-vote .eyebrow-mark{ display:block; margin-bottom:14px; }
 
@@ -350,118 +369,122 @@
   .candidate-grid{
     margin-top:48px;
     display:grid;
-    grid-template-columns:repeat(3,minmax(230px,1fr));
-    gap:1px;
-    background:var(--line-soft);
-    border:1px solid var(--line-soft);
-    border-radius:var(--r-lg);
-    overflow:hidden;
+    grid-template-columns:repeat(3,minmax(280px,1fr));
+    gap:26px;
   }
 
   .candidate-card{
-    background:var(--navy-900);
-    text-align:left;
-    padding:30px 26px 32px;
+    background:var(--paper);
+    color:var(--navy-950);
+    border-radius:var(--r-lg);
+    padding-bottom:24px;
     cursor:pointer;
     position:relative;
-    transition:background .2s ease, transform .2s cubic-bezier(.2,.8,.3,1);
+    overflow:hidden;
+    border:2px solid transparent;
+    box-shadow:0 18px 40px rgba(4,6,26,0.32);
+    transition:transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s ease, border-color .2s ease;
   }
 
   .candidate-card:hover{
-    background:var(--panel-strong);
-    transform:translateY(-4px);
-    z-index:2;
+    transform:translateY(-6px) rotate(-0.35deg);
+    box-shadow:0 26px 54px rgba(4,6,26,0.38);
   }
 
   .candidate-card.selected{
-    background:linear-gradient(165deg, rgba(245,180,0,0.14), rgba(245,180,0,0.04));
-    box-shadow:inset 0 0 0 1.5px var(--gold-500);
-    z-index:2;
+    border-color:var(--gold-500);
+    transform:translateY(-6px) rotate(0.5deg);
+    box-shadow:0 26px 54px rgba(245,180,0,0.3);
   }
 
-  .candidate-card .top-row{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:12px;
-  }
-
-  .paslon-tag{
-    font-family:var(--sans);
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:1.4px;
-    color:var(--muted);
-    padding-bottom:6px;
-    border-bottom:2px solid transparent;
-  }
-
-  .tag-1{ color:#ff9d6c; border-color:#ff9d6c; }
-  .tag-2{ color:var(--gold-500); border-color:var(--gold-500); }
-  .tag-3{ color:#5eead4; border-color:#5eead4; }
-
-  .radio-dot{
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    border:1.5px solid rgba(255,255,255,0.28);
+  .ballot-stub{
     display:flex;
     align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-    transition:border-color .2s ease, background .2s ease;
+    justify-content:space-between;
+    padding:18px 22px 14px;
+    border-bottom:2px dashed rgba(8,12,48,0.16);
   }
 
-  .candidate-card.selected .radio-dot{
-    border-color:var(--gold-500);
-    background:var(--gold-500);
+  .stub-label{
+    font-size:10.5px;
+    font-weight:800;
+    letter-spacing:1.6px;
+    color:rgba(8,12,48,0.42);
   }
 
-  .radio-dot::after{
-    content:"";
-    width:14px;
-    height:14px;
-    background:
-      linear-gradient(-45deg, transparent 40%, var(--gold-ink) 40%, var(--gold-ink) 46%, transparent 46%) 0 55%/100% 6% no-repeat,
-      linear-gradient(45deg, transparent 62%, var(--gold-ink) 62%, var(--gold-ink) 68%, transparent 68%) 0 0/100% 100% no-repeat;
-    transform:scale(0.4) rotate(0deg);
-    opacity:0;
-    transition:transform .28s cubic-bezier(.2,1.4,.4,1), opacity .2s ease;
+  .stub-number{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:26px;
+    line-height:1;
   }
 
-  .candidate-card.selected .radio-dot::after{
-    opacity:1;
-    transform:scale(1);
+  .candidate-card[data-id="1"] .stub-number{ color:#d9601a; }
+  .candidate-card[data-id="2"] .stub-number{ color:var(--gold-600); }
+  .candidate-card[data-id="3"] .stub-number{ color:#0f9c8b; }
+
+  .ballot-photo-wrap{
+    position:relative;
+    margin:16px 18px 0;
+    border-radius:var(--r-md);
+    overflow:hidden;
   }
 
   .candidate-photo{
     width:100%;
-    aspect-ratio:4/3.2;
-    border-radius:var(--r-md);
+    height:320px;
     object-fit:cover;
-    margin-top:20px;
-    background:rgba(255,255,255,0.06);
+    object-position:top center;
     display:block;
+    background:rgba(8,12,48,0.06);
+  }
+
+  .stamp-mark{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:rgba(245,180,0,0.95);
+    color:var(--gold-ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transform:scale(0.5) rotate(-18deg);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    transition:transform .32s cubic-bezier(.2,1.5,.4,1), opacity .2s ease;
+  }
+
+  .stamp-mark svg{ width:22px; height:22px; }
+
+  .candidate-card.selected .stamp-mark{
+    opacity:1;
+    transform:scale(1) rotate(-10deg);
+  }
+
+  .ballot-info{
+    padding:18px 22px 0;
   }
 
   .candidate-card .cname{
-    margin-top:20px;
     font-family:var(--serif);
     font-weight:600;
-    font-size:20px;
+    font-size:21px;
     line-height:1.2;
   }
 
   .candidate-card .cpartner{
-    color:var(--muted);
+    color:rgba(8,12,48,0.55);
     font-size:13.5px;
     margin-top:4px;
   }
 
   .candidate-card .cslogan{
-    margin-top:12px;
-    font-size:13.5px;
-    color:rgba(255,255,255,0.6);
+    margin-top:10px;
+    font-size:13px;
+    color:rgba(8,12,48,0.45);
     line-height:1.5;
   }
 
@@ -728,6 +751,7 @@
     .login-form-stage{ min-width:0; padding:34px 6vw 50px; }
     .how-it-works{ margin-top:40px; }
     .candidate-grid{ grid-template-columns:1fr; }
+    .candidate-photo{ height:260px; }
     .stat-band{ grid-template-columns:1fr; }
     #screen-vote .top, #screen-vote .content, #screen-admin .content{ padding-left:6vw; padding-right:6vw; }
   }
@@ -735,8 +759,6 @@
 </head>
 
 <body>
-
-<!-- LOGIN -->
 
 <!-- LOGIN -->
 
@@ -753,14 +775,35 @@
     </div>
 
     <div class="login-headline">
-      <span class="eyebrow-mark">---------------------</span>
-      <h1>Pemilihan Ketua<br><em>OSIS dan MPK</em><br>Tahun 2026/2027</h1>
+      <span class="eyebrow-mark">PEMILOS 2026</span>
+
+      <h1>Satu suara,<br><em>satu arah</em> untuk sekolah.</h1>
+
+      <p>Pemilihan Ketua OSIS dan MPK berlangsung serentak dan tercatat langsung ke sistem — masuk dengan akun yang sudah dibagikan panitia untuk memberikan suaramu.</p>
+
+      <div class="how-it-works">
+        <div class="how-item">
+          <span class="n">01</span>
+          <span class="t"><b>Masuk</b> dengan username dan password dari panitia.</span>
+        </div>
+
+        <div class="how-item">
+          <span class="n">02</span>
+          <span class="t"><b>Pilih</b> satu pasangan calon yang kamu percaya.</span>
+        </div>
+
+        <div class="how-item">
+          <span class="n">03</span>
+          <span class="t"><b>Kirim</b> suaramu — setiap akun hanya bisa memilih sekali.</span>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="login-form-stage">
     <div class="login-form-wrap">
-      <h2>Login</h2>
+      <h2>Masuk</h2>
+      <p class="sub">Gunakan akun yang diberikan panitia pemilos.</p>
 
       <form id="login-form" novalidate>
         <div class="field">
@@ -804,9 +847,14 @@
 
   <div class="content">
     <div class="masthead">
-      <span class="eyebrow-mark">SURAT SUARA</span>
-      <h1>Pilih satu pasangan calon ketua OSIS</h1>
-      <p class="instructions">Sentuh salah satu kartu untuk memilih, lalu kirim suaramu. Pilihan dapat diganti sebelum dikirim.</p>
+      <span class="ballot-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div>
+        <span class="eyebrow-mark">SURAT SUARA</span>
+        <h1>Pilih satu pasangan calon ketua OSIS</h1>
+        <p class="instructions">Sentuh salah satu kartu untuk memilih, lalu kirim suaramu. Pilihan dapat diganti sebelum dikirim.</p>
+      </div>
     </div>
 
     <div class="candidate-grid" id="candidate-grid"></div>
@@ -855,9 +903,9 @@
 
   <div class="content">
 
-    <div class="admin-head">OSPEKA
-      <span class="eyebrow-mark"></span>
-      <h1>Hasil Perhitungan Suara Paslon</h1>
+    <div class="admin-head">
+      <span class="eyebrow-mark">ADMIN ONLY</span>
+      <h1>Hasil Penghitungan Suara</h1>
       <div class="admin-status" id="admin-status">Menghubungkan...</div>
     </div>
 
@@ -1297,15 +1345,22 @@
     candidateGrid.innerHTML = CANDIDATES.map(function(c){
 
       return (
-        '<div class="card candidate-card" data-id="' + c.id + '" tabindex="0" role="button" aria-pressed="false">' +
-          '<div class="top-row">' +
-            '<span class="paslon-tag ' + c.tagClass + '">' + c.tag + '</span>' +
-            '<span class="radio-dot"></span>' +
+        '<div class="candidate-card" data-id="' + c.id + '" tabindex="0" role="button" aria-pressed="false">' +
+          '<div class="ballot-stub">' +
+            '<span class="stub-label">NO. URUT</span>' +
+            '<span class="stub-number">0' + c.id + '</span>' +
           '</div>' +
-          '<img class="candidate-photo" src="' + c.photo + '" alt="Foto ' + c.name + '">' +
-          '<div class="cname">' + c.name + '</div>' +
-          '<div class="cpartner">' + c.partner + '</div>' +
-          '<div class="cslogan">' + c.slogan + '</div>' +
+          '<div class="ballot-photo-wrap">' +
+            '<img class="candidate-photo" src="' + c.photo + '" alt="Foto ' + c.name + '">' +
+            '<span class="stamp-mark" aria-hidden="true">' +
+              '<svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '</span>' +
+          '</div>' +
+          '<div class="ballot-info">' +
+            '<div class="cname">' + c.name + '</div>' +
+            '<div class="cpartner">' + c.partner + '</div>' +
+            '<div class="cslogan">' + c.slogan + '</div>' +
+          '</div>' +
         '</div>'
       );
 
