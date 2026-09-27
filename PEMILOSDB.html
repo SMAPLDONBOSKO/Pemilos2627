@@ -1311,6 +1311,7 @@
 
   const candidateGrid = document.getElementById('candidate-grid');
   const confirmBtn = document.getElementById('confirm-vote-btn');
+  const thanksSound = document.getElementById('thanks-sound');
 
   function renderCandidates(){
 
@@ -1400,6 +1401,8 @@
      * for 5 seconds after recording the vote.
      */
     showScreen('thanks');
+    thanksSound.currentTime = 0;
+    thanksSound.play().catch(function(err){ console.error('Sound failed:', err); });
 
     try{
 
@@ -1451,6 +1454,6 @@
   renderCandidates();
 
 </script>
-
+<audio id="thanks-sound" src="sounds/success.mp3" preload="auto"></audio>
 </body>
 </html>
