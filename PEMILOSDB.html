@@ -744,6 +744,74 @@
     font-variant-numeric:tabular-nums;
   }
 
+  /* ---------- bar chart view (flat, plain, no glow) ---------- */
+
+  .view-toggle-wrap{ margin-top:24px; }
+
+  .col-chart{ display:none; padding:26px 0 8px; }
+  .results-panel.chart-mode .result-row{ display:none; }
+  .results-panel.chart-mode .col-chart{ display:block; }
+
+  .col-plot{ display:grid; grid-template-columns:44px 1fr; }
+
+  .col-axis{ position:relative; height:300px; }
+  .col-axis span{
+    position:absolute; right:10px;
+    transform:translateY(50%);
+    font-size:11px; color:var(--muted);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .col-slots{
+    height:300px;
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-left:1px solid rgba(255,255,255,0.35);
+    border-bottom:1px solid rgba(255,255,255,0.35);
+    background-image:linear-gradient(to top, var(--line-soft) 1px, transparent 1px);
+    background-size:100% 25%;
+  }
+
+  .col-slot{ display:flex; align-items:flex-end; justify-content:center; }
+
+  .col-fill{
+    position:relative;
+    width:min(96px,55%);
+    height:0%;
+    transition:height .45s ease-out;
+  }
+  .col-fill.f1{ background:#d9601a; }
+  .col-fill.f2{ background:#f5b400; }
+  .col-fill.f3{ background:#0f9c8b; }
+
+  .col-val{
+    position:absolute; left:0; right:0; top:-26px;
+    text-align:center;
+    font-family:var(--serif); font-weight:600; font-size:20px;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .col-names{
+    margin-left:44px;
+    display:grid; grid-template-columns:repeat(3,1fr);
+    text-align:center; padding-top:12px;
+    font-size:13px; font-weight:600;
+  }
+  .col-names small{ display:block; margin-top:3px; font-weight:400; font-size:12px; color:var(--muted); }
+
+  /* ---------- fullscreen gate ---------- */
+
+  #fs-gate{
+    position:fixed; inset:0; z-index:9999;
+    background:var(--navy-950);
+    display:none; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:18px; text-align:center; padding:30px; cursor:pointer;
+  }
+  #fs-gate.show{ display:flex; }
+  #fs-gate h2{ font-family:var(--serif); font-weight:600; font-size:clamp(26px,4vw,40px); }
+  #fs-gate p{ color:var(--muted); font-size:14px; max-width:380px; line-height:1.6; }
+  #fs-gate .btn-primary{ padding:15px 34px; border-radius:100px; font-size:15px; margin-top:8px; }
+
   @media (max-width:860px){
     #screen-login{ flex-direction:column; }
     .login-stage{ border-right:none; border-bottom:1px solid var(--line-soft); padding:34px 6vw; }
@@ -754,11 +822,20 @@
     .candidate-photo{ height:260px; }
     .stat-band{ grid-template-columns:1fr; }
     #screen-vote .top, #screen-vote .content, #screen-admin .content{ padding-left:6vw; padding-right:6vw; }
+    .col-slots, .col-axis{ height:240px; }
   }
 </style>
 </head>
 
 <body>
+
+<!-- FULLSCREEN GATE -->
+
+<div id="fs-gate" class="show">
+  <h2>Ganti ke fullscreen woy</h2>
+  <p>Pencet tombol di bawah buat ke mode fullscreen</p>
+  <button type="button" class="btn-primary">Ganti ke Fullscreen</button>
+</div>
 
 <!-- LOGIN -->
 
@@ -852,6 +929,7 @@
     </div>
 
     <h1>Terima kasih</h1>
+    <p>Suaramu sudah tercatat.</p>
   </div>
 </section>
 
@@ -892,7 +970,27 @@
       </div>
     </div>
 
+    <div class="view-toggle-wrap">
+      <button class="btn-link" id="view-toggle" type="button">Tampilkan diagram batang</button>
+    </div>
+
     <div class="results-panel">
+
+      <div class="col-chart">
+        <div class="col-plot">
+          <div class="col-axis" id="col-axis"></div>
+          <div class="col-slots">
+            <div class="col-slot"><div class="col-fill f1" id="col-fill-1"><span class="col-val" id="col-val-1">0</span></div></div>
+            <div class="col-slot"><div class="col-fill f2" id="col-fill-2"><span class="col-val" id="col-val-2">0</span></div></div>
+            <div class="col-slot"><div class="col-fill f3" id="col-fill-3"><span class="col-val" id="col-val-3">0</span></div></div>
+          </div>
+        </div>
+        <div class="col-names">
+          <div>Paslon 01<small>Immaculata Paksi</small></div>
+          <div>Paslon 02<small>Yeriel Febrian</small></div>
+          <div>Paslon 03<small>Vinta Ngesti</small></div>
+        </div>
+      </div>
 
       <div class="result-row">
         <div class="result-top">
@@ -1285,6 +1383,40 @@
         leadingEl.textContent = names[topIndex + 1];
       }
     }
+
+    renderColumnChart(values);
+  }
+
+  /* BAR CHART VIEW */
+
+  const resultsPanel = document.querySelector('.results-panel');
+  const viewToggle = document.getElementById('view-toggle');
+  const colAxis = document.getElementById('col-axis');
+
+  viewToggle.addEventListener('click', function(){
+    const on = resultsPanel.classList.toggle('chart-mode');
+    viewToggle.textContent = on ? 'Tampilkan daftar' : 'Tampilkan diagram batang';
+    updateBars();
+  });
+
+  function renderColumnChart(values){
+
+    const maxValue = Math.max(...values, 0);
+    const top = Math.max(4, Math.ceil(maxValue / 4) * 4);
+
+    colAxis.innerHTML = '';
+    for(let i = 0; i <= 4; i++){
+      const tick = document.createElement('span');
+      tick.style.bottom = (i * 25) + '%';
+      tick.textContent = Math.round((top / 4) * i).toLocaleString('id-ID');
+      colAxis.appendChild(tick);
+    }
+
+    values.forEach(function(value, index){
+      const id = index + 1;
+      document.getElementById('col-fill-' + id).style.height = (value / top * 100) + '%';
+      document.getElementById('col-val-' + id).textContent = value.toLocaleString('id-ID');
+    });
   }
 
   /* LOGOUT */
@@ -1453,6 +1585,72 @@
   renderCandidates();
 
 </script>
+
 <audio id="thanks-sound" src="sounds/success.mp3" preload="auto"></audio>
+
+<!-- FULLSCREEN + BEEP -->
+
+<script>
+(function(){
+  const gate = document.getElementById('fs-gate');
+  const root = document.documentElement;
+  const canFS = !!(root.requestFullscreen || root.webkitRequestFullscreen);
+  let audioCtx = null;
+  let alarm = null;
+
+  // Browsers without Fullscreen API support (e.g. iPhone Safari): skip the gate
+  if(!canFS){ gate.classList.remove('show'); return; }
+
+  function isFS(){
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function beep(){
+    if(!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.25, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.42);
+  }
+
+  function update(){
+    if(isFS()){
+      gate.classList.remove('show');
+      if(alarm){ clearInterval(alarm); alarm = null; }
+    }else{
+      gate.classList.add('show');
+      // only starts after the first click (browser autoplay rule)
+      if(audioCtx && !alarm){
+        beep();
+        alarm = setInterval(beep, 1200);
+      }
+    }
+  }
+
+  async function enterFullscreen(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      await audioCtx.resume();
+    }catch(e){ console.error('Audio init failed:', e); }
+
+    try{
+      if(root.requestFullscreen){ await root.requestFullscreen(); }
+      else{ root.webkitRequestFullscreen(); }
+    }catch(e){ console.error('Fullscreen failed:', e); }
+  }
+
+  gate.addEventListener('click', enterFullscreen);
+  document.addEventListener('fullscreenchange', update);
+  document.addEventListener('webkitfullscreenchange', update);
+})();
+</script>
+
 </body>
 </html>
